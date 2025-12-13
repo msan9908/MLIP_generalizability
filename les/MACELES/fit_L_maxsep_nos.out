@@ -1,0 +1,277 @@
+Traceback (most recent call last):
+  File "/home/michal/les/MACELES/./run_train.py", line 3, in <module>
+    from mace.cli.run_train import main
+ModuleNotFoundError: No module named 'mace'
+/home/michal/.local/lib/python3.10/site-packages/e3nn/o3/_wigner.py:10: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  _Jd, _W3j_flat, _W3j_indices = torch.load(os.path.join(os.path.dirname(__file__), 'constants.pt'))
+/home/michal/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+2025-11-28 09:43:37.746 INFO: ===========VERIFYING SETTINGS===========
+2025-11-28 09:43:37.746 WARNING: All of hidden_irreps, num_channels and max_L are specified
+2025-11-28 09:43:37.747 WARNING: Using num_channels and max_L to create hidden_irreps: 64x0e+64x1o+64x2e.
+2025-11-28 09:43:37.747 INFO: Stage Two is activated as start_stage_two was defined
+2025-11-28 09:43:37.747 INFO: MACE version: 0.3.14
+2025-11-28 09:43:37.849 INFO: CUDA version: 12.1, CUDA device: 0
+2025-11-28 09:43:37.887 INFO: ===========LOADING INPUT DATA===========
+2025-11-28 09:43:37.887 INFO: Using heads: ['Default']
+2025-11-28 09:43:37.887 INFO: Using the key specifications to parse data:
+2025-11-28 09:43:37.887 INFO: Default: KeySpecification(info_keys={'energy': 'energy', 'stress': 'REF_stress', 'virials': 'REF_virials', 'dipole': 'dipole', 'head': 'head', 'elec_temp': 'elec_temp', 'total_charge': 'total_charge', 'polarizability': 'polarizability', 'total_spin': 'total_spin'}, arrays_keys={'forces': 'forces', 'charges': 'REF_charges'})
+2025-11-28 09:43:37.887 INFO: =============    Processing head Default     ===========
+2025-11-28 09:43:48.794 WARNING: Since ASE version 3.23.0b1, using energy_key 'energy' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'energy' to 'REF_energy'. You need to use --energy_key='REF_energy' to specify the chosen key name.
+2025-11-28 09:43:50.450 WARNING: Since ASE version 3.23.0b1, using forces_key 'forces' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'forces' to 'REF_forces'. You need to use --forces_key='REF_forces' to specify the chosen key name.
+2025-11-28 09:43:53.138 INFO: Training set 1/1 [energy: 13148, stress: 0, virials: 0, dipole components: 0, head: 13148, elec_temp: 0, total_charge: 13148, polarizability: 0, total_spin: 0, forces: 13148, charges: 0]
+2025-11-28 09:43:53.206 INFO: Total Training set [energy: 13148, stress: 0, virials: 0, dipole components: 0, head: 13148, elec_temp: 0, total_charge: 13148, polarizability: 0, total_spin: 0, forces: 13148, charges: 0]
+2025-11-28 09:43:54.381 WARNING: Since ASE version 3.23.0b1, using energy_key 'energy' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'energy' to 'REF_energy'. You need to use --energy_key='REF_energy' to specify the chosen key name.
+2025-11-28 09:43:54.572 WARNING: Since ASE version 3.23.0b1, using forces_key 'forces' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'forces' to 'REF_forces'. You need to use --forces_key='REF_forces' to specify the chosen key name.
+2025-11-28 09:43:54.876 INFO: Validation set 1/1 [energy: 1460, stress: 0, virials: 0, dipole components: 0, head: 1460, elec_temp: 0, total_charge: 1460, polarizability: 0, total_spin: 0, forces: 1460, charges: 0]
+2025-11-28 09:43:54.883 INFO: Total Validation set [energy: 1460, stress: 0, virials: 0, dipole components: 0, head: 1460, elec_temp: 0, total_charge: 1460, polarizability: 0, total_spin: 0, forces: 1460, charges: 0]
+2025-11-28 09:44:00.244 WARNING: Since ASE version 3.23.0b1, using energy_key 'energy' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'energy' to 'REF_energy'. You need to use --energy_key='REF_energy' to specify the chosen key name.
+2025-11-28 09:44:01.071 WARNING: Since ASE version 3.23.0b1, using forces_key 'forces' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'forces' to 'REF_forces'. You need to use --forces_key='REF_forces' to specify the chosen key name.
+2025-11-28 09:44:02.373 INFO: Test set 1/1 [energy: 6250, stress: 0, virials: 0, dipole components: 0, head: 6250, elec_temp: 0, total_charge: 6250, polarizability: 0, total_spin: 0, forces: 6250, charges: 0]
+2025-11-28 09:44:02.408 INFO: Total Test set [energy: 6250, stress: 0, virials: 0, dipole components: 0, head: 6250, elec_temp: 0, total_charge: 6250, polarizability: 0, total_spin: 0, forces: 6250, charges: 0]
+2025-11-28 09:44:02.408 INFO: Total number of configurations: train=13148, valid=1460, tests=[Default_Default: 6250],
+2025-11-28 09:44:02.830 INFO: Atomic Numbers used: [1, 3, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 35, 38, 39, 40, 41, 42, 44, 46, 47, 48, 53, 56, 57, 58, 59, 60, 62, 63, 64, 65, 66, 67, 68, 69, 71, 72, 74, 75, 78, 79, 92, 93]
+2025-11-28 09:44:02.831 INFO: Isolated Atomic Energies (E0s) not in training file, using command line argument
+2025-11-28 09:44:02.831 INFO: Computing average Atomic Energies using least squares regression
+2025-11-28 09:44:03.846 INFO: Atomic Energies used (z: eV) for head Default: {1: -4.021098474695718, 3: -4.705693780664371, 5: -6.5960743282890855, 6: -8.884521862459659, 7: -8.033625654067766, 8: -6.982220851127199, 9: -4.4356550959700645, 11: -3.1911208996917857, 12: -5.2385242786923705, 13: -10.714285864300027, 14: -7.511574830363937, 15: -6.7799552625216, 16: -4.249322263934079, 17: -2.8618350490137523, 20: -7.2667988083342365, 21: -13.52283516066128, 22: 3.5704772471945034e-13, 23: -11.683889302376254, 24: -11.563872123367847, 25: -10.350015958190747, 26: -8.289957749087378, 27: -6.602953831139301, 28: -3.993105422017459, 29: -3.339241406273567, 30: -2.5663919066357033, 31: -6.637699753270699, 35: -1.0631564560647941, 38: -6.731619203811622, 39: -13.814228109705002, 40: -13.334880738419269, 41: -7.16572113261832, 42: -12.015581152064422, 44: -9.012210917734212, 46: -2.225981488917915, 47: -2.6435017303511854, 48: -1.1314910943927323, 53: -2.7562295080153394, 56: -6.960873449349333, 57: -11.71111826981737, 58: -12.781964298184176, 59: -12.372539225256059, 60: -13.937805044033865, 62: -17.678443204704607, 63: -15.087000966912072, 64: -20.64539946222561, 65: -18.125377051080694, 66: -16.647215875180663, 67: -15.118844649309935, 68: -13.671975409458176, 69: -13.168193119383782, 71: -11.91750071994695, 72: -16.592637030429522, 74: -14.69074079224271, 75: -13.927680135218363, 78: -7.325179561793661, 79: -3.6287514871343354, 92: -17.697339564198625, 93: -18.170329110916153}
+2025-11-28 09:44:03.846 INFO: Processing datasets for head 'Default'
+2025-11-28 09:44:43.301 INFO: Combining 1 list datasets for head 'Default'
+2025-11-28 09:44:47.432 INFO: Combining 1 list datasets for head 'Default_valid'
+2025-11-28 09:44:47.432 INFO: Combined validation datasets for Default
+2025-11-28 09:44:47.432 INFO: Head 'Default' training dataset size: 13148
+2025-11-28 09:44:47.433 INFO: Computing average number of neighbors
+2025-11-28 09:45:06.671 INFO: Average number of neighbors: 27.52269172668457
+2025-11-28 09:45:06.672 INFO: During training the following quantities will be reported: energy, forces
+2025-11-28 09:45:06.672 INFO: ===========MODEL DETAILS===========
+2025-11-28 09:45:24.799 INFO: Building model
+2025-11-28 09:45:24.800 INFO: Message passing with 64 channels and max_L=2 (64x0e+64x1o+64x2e)
+2025-11-28 09:45:24.800 INFO: 2 layers, each with correlation order: 2 (body order: 3) and spherical harmonics up to: l=3
+2025-11-28 09:45:24.800 INFO: 8 radial and 5 basis functions
+2025-11-28 09:45:24.800 INFO: Radial cutoff: 4.5 A (total receptive field for each atom: 9.0 A)
+2025-11-28 09:45:24.800 INFO: Distance transform for radial basis functions: None
+2025-11-28 09:45:24.800 INFO: Hidden irreps: 64x0e+64x1o+64x2e
+/home/michal/.local/lib/python3.10/site-packages/torch/jit/_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+/home/michal/.local/lib/python3.10/site-packages/torch/jit/_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+/home/michal/.local/lib/python3.10/site-packages/torch/jit/_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+/home/michal/.local/lib/python3.10/site-packages/torch/jit/_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+/home/michal/.local/lib/python3.10/site-packages/torch/jit/_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+/home/michal/.local/lib/python3.10/site-packages/torch/jit/_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+/home/michal/.local/lib/python3.10/site-packages/torch/jit/_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+/home/michal/.local/lib/python3.10/site-packages/torch/jit/_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+/home/michal/.local/lib/python3.10/site-packages/torch/jit/_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+/home/michal/.local/lib/python3.10/site-packages/torch/jit/_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+/home/michal/.local/lib/python3.10/site-packages/torch/jit/_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+/home/michal/.local/lib/python3.10/site-packages/torch/jit/_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+/home/michal/.local/lib/python3.10/site-packages/torch/jit/_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+/home/michal/.local/lib/python3.10/site-packages/torch/jit/_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+/home/michal/.local/lib/python3.10/site-packages/torch/jit/_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+/home/michal/.local/lib/python3.10/site-packages/torch/jit/_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+/home/michal/.local/lib/python3.10/site-packages/torch/jit/_check.py:178: UserWarning: The TorchScript type system doesn't support instance-level annotations on empty non-base types in `__init__`. Instead, either 1) use a type annotation in the class body, or 2) wrap the type in `torch.jit.Attribute`.
+  warnings.warn(
+2025-11-28 09:45:25.830 INFO: Total number of parameters: 796064
+2025-11-28 09:45:25.830 INFO: 
+2025-11-28 09:45:25.830 INFO: ===========OPTIMIZER INFORMATION===========
+2025-11-28 09:45:25.830 INFO: Using ADAM as parameter optimizer
+2025-11-28 09:45:25.830 INFO: Batch size: 2
+2025-11-28 09:45:25.830 INFO: Using Exponential Moving Average with decay: 0.99
+2025-11-28 09:45:25.830 INFO: Number of gradient updates: 986100
+2025-11-28 09:45:25.830 INFO: Learning rate: 0.01, weight decay: 5e-07
+2025-11-28 09:45:25.830 INFO: WeightedEnergyForcesLoss(energy_weight=10.000, forces_weight=10000.000)
+2025-11-28 09:45:25.831 INFO: Stage Two (after 50 epochs) with loss function: WeightedEnergyForcesLoss(energy_weight=1000.000, forces_weight=100.000), with energy weight : 1000.0, forces weight : 100.0 and learning rate : 0.001
+2025-11-28 09:45:25.943 INFO: Using gradient clipping with tolerance=10.000
+2025-11-28 09:45:25.943 INFO: 
+2025-11-28 09:45:25.943 INFO: ===========TRAINING===========
+2025-11-28 09:45:25.943 INFO: Started training, reporting errors on validation set
+2025-11-28 09:45:25.943 INFO: Loss metrics on validation set
+2025-11-28 09:46:00.416 INFO: Initial: head: Default, loss=7.39728832, MAE_E_per_atom=   44.81 meV, MAE_F=   15.00 meV / A
+2025-11-28 10:03:59.545 INFO: Epoch 0: head: Default, loss=7.37331629, MAE_E_per_atom=   45.03 meV, MAE_F=   14.27 meV / A
+2025-11-28 10:21:50.981 INFO: Epoch 1: head: Default, loss=7.37246895, MAE_E_per_atom=   45.43 meV, MAE_F=   14.28 meV / A
+2025-11-28 10:39:38.971 INFO: Epoch 2: head: Default, loss=7.37259197, MAE_E_per_atom=   45.32 meV, MAE_F=   14.28 meV / A
+2025-11-28 10:57:28.055 INFO: Epoch 3: head: Default, loss=7.37205839, MAE_E_per_atom=   45.40 meV, MAE_F=   14.27 meV / A
+2025-11-28 11:15:18.479 INFO: Epoch 4: head: Default, loss=7.37196350, MAE_E_per_atom=   44.70 meV, MAE_F=   14.28 meV / A
+2025-11-28 11:33:08.869 INFO: Epoch 5: head: Default, loss=7.37201691, MAE_E_per_atom=   44.18 meV, MAE_F=   14.28 meV / A
+2025-11-28 11:51:00.073 INFO: Epoch 6: head: Default, loss=7.37276745, MAE_E_per_atom=   44.10 meV, MAE_F=   14.29 meV / A
+2025-11-28 12:08:48.288 INFO: Epoch 7: head: Default, loss=7.37214470, MAE_E_per_atom=   43.83 meV, MAE_F=   14.28 meV / A
+2025-11-28 12:26:39.024 INFO: Epoch 8: head: Default, loss=7.37145948, MAE_E_per_atom=   44.12 meV, MAE_F=   14.28 meV / A
+2025-11-28 12:44:27.608 INFO: Epoch 9: head: Default, loss=7.37124348, MAE_E_per_atom=   43.92 meV, MAE_F=   14.28 meV / A
+2025-11-28 13:02:15.344 INFO: Epoch 10: head: Default, loss=7.37160587, MAE_E_per_atom=   43.80 meV, MAE_F=   14.28 meV / A
+2025-11-28 13:20:04.582 INFO: Epoch 11: head: Default, loss=7.37183094, MAE_E_per_atom=   43.64 meV, MAE_F=   14.30 meV / A
+2025-11-28 13:37:52.901 INFO: Epoch 12: head: Default, loss=7.37152433, MAE_E_per_atom=   43.61 meV, MAE_F=   14.28 meV / A
+2025-11-28 13:55:41.821 INFO: Epoch 13: head: Default, loss=7.37218142, MAE_E_per_atom=   43.65 meV, MAE_F=   14.31 meV / A
+2025-11-28 14:13:31.017 INFO: Epoch 14: head: Default, loss=7.37263203, MAE_E_per_atom=   43.60 meV, MAE_F=   14.31 meV / A
+2025-11-28 14:31:20.125 INFO: Epoch 15: head: Default, loss=7.37040663, MAE_E_per_atom=   43.55 meV, MAE_F=   14.29 meV / A
+2025-11-28 14:49:09.557 INFO: Epoch 16: head: Default, loss=7.37291765, MAE_E_per_atom=   43.49 meV, MAE_F=   14.31 meV / A
+2025-11-28 15:06:58.315 INFO: Epoch 17: head: Default, loss=7.37165213, MAE_E_per_atom=   43.55 meV, MAE_F=   14.29 meV / A
+2025-11-28 15:24:50.299 INFO: Epoch 18: head: Default, loss=7.37096405, MAE_E_per_atom=   43.50 meV, MAE_F=   14.29 meV / A
+2025-11-28 15:42:42.493 INFO: Epoch 19: head: Default, loss=7.37096405, MAE_E_per_atom=   43.63 meV, MAE_F=   14.29 meV / A
+2025-11-28 16:00:31.898 INFO: Epoch 20: head: Default, loss=7.37063408, MAE_E_per_atom=   43.69 meV, MAE_F=   14.30 meV / A
+2025-11-28 16:18:19.773 INFO: Epoch 21: head: Default, loss=7.37166119, MAE_E_per_atom=   43.53 meV, MAE_F=   14.32 meV / A
+2025-11-28 16:36:10.470 INFO: Epoch 22: head: Default, loss=7.37181568, MAE_E_per_atom=   43.75 meV, MAE_F=   14.29 meV / A
+2025-11-28 16:54:00.393 INFO: Epoch 23: head: Default, loss=7.37042999, MAE_E_per_atom=   43.58 meV, MAE_F=   14.28 meV / A
+2025-11-28 17:11:48.464 INFO: Epoch 24: head: Default, loss=7.37025690, MAE_E_per_atom=   43.50 meV, MAE_F=   14.29 meV / A
+2025-11-28 17:29:37.241 INFO: Epoch 25: head: Default, loss=7.37117290, MAE_E_per_atom=   43.35 meV, MAE_F=   14.30 meV / A
+2025-11-28 17:47:24.325 INFO: Epoch 26: head: Default, loss=7.37193441, MAE_E_per_atom=   43.43 meV, MAE_F=   14.32 meV / A
+2025-11-28 18:05:11.770 INFO: Epoch 27: head: Default, loss=7.37217045, MAE_E_per_atom=   43.40 meV, MAE_F=   14.32 meV / A
+2025-11-28 18:22:58.091 INFO: Epoch 28: head: Default, loss=7.37114906, MAE_E_per_atom=   43.35 meV, MAE_F=   14.30 meV / A
+2025-11-28 18:40:45.901 INFO: Epoch 29: head: Default, loss=7.37189293, MAE_E_per_atom=   43.39 meV, MAE_F=   14.29 meV / A
+2025-11-28 18:58:32.425 INFO: Epoch 30: head: Default, loss=7.37086964, MAE_E_per_atom=   43.42 meV, MAE_F=   14.29 meV / A
+2025-11-28 19:16:18.306 INFO: Epoch 31: head: Default, loss=7.36959887, MAE_E_per_atom=   43.63 meV, MAE_F=   14.29 meV / A
+2025-11-28 19:34:05.742 INFO: Epoch 32: head: Default, loss=7.36943579, MAE_E_per_atom=   43.44 meV, MAE_F=   14.29 meV / A
+2025-11-28 19:51:52.793 INFO: Epoch 33: head: Default, loss=7.37006855, MAE_E_per_atom=   43.71 meV, MAE_F=   14.31 meV / A
+2025-11-28 20:09:40.482 INFO: Epoch 34: head: Default, loss=7.37099028, MAE_E_per_atom=   43.80 meV, MAE_F=   14.32 meV / A
+2025-11-28 20:27:28.870 INFO: Epoch 35: head: Default, loss=7.37014580, MAE_E_per_atom=   43.67 meV, MAE_F=   14.29 meV / A
+2025-11-28 20:45:15.551 INFO: Epoch 36: head: Default, loss=7.37205029, MAE_E_per_atom=   44.00 meV, MAE_F=   14.32 meV / A
+2025-11-28 21:03:03.814 INFO: Epoch 37: head: Default, loss=7.37078810, MAE_E_per_atom=   43.73 meV, MAE_F=   14.29 meV / A
+2025-11-28 21:20:51.223 INFO: Epoch 38: head: Default, loss=7.37012863, MAE_E_per_atom=   43.78 meV, MAE_F=   14.30 meV / A
+2025-11-28 21:38:39.768 INFO: Epoch 39: head: Default, loss=7.37011194, MAE_E_per_atom=   43.79 meV, MAE_F=   14.29 meV / A
+2025-11-28 21:56:26.861 INFO: Epoch 40: head: Default, loss=7.37096882, MAE_E_per_atom=   43.76 meV, MAE_F=   14.30 meV / A
+2025-11-28 22:14:13.306 INFO: Epoch 41: head: Default, loss=7.37116718, MAE_E_per_atom=   43.91 meV, MAE_F=   14.30 meV / A
+2025-11-28 22:32:02.281 INFO: Epoch 42: head: Default, loss=7.37053442, MAE_E_per_atom=   43.93 meV, MAE_F=   14.30 meV / A
+2025-11-28 22:49:49.428 INFO: Epoch 43: head: Default, loss=7.37054253, MAE_E_per_atom=   43.79 meV, MAE_F=   14.29 meV / A
+2025-11-28 23:07:37.114 INFO: Epoch 44: head: Default, loss=7.37090635, MAE_E_per_atom=   43.80 meV, MAE_F=   14.30 meV / A
+2025-11-28 23:25:23.838 INFO: Epoch 45: head: Default, loss=7.37137079, MAE_E_per_atom=   43.85 meV, MAE_F=   14.30 meV / A
+2025-11-28 23:43:11.018 INFO: Epoch 46: head: Default, loss=7.37012386, MAE_E_per_atom=   43.94 meV, MAE_F=   14.32 meV / A
+2025-11-29 00:00:58.330 INFO: Epoch 47: head: Default, loss=7.37137890, MAE_E_per_atom=   43.85 meV, MAE_F=   14.31 meV / A
+2025-11-29 00:18:45.160 INFO: Epoch 48: head: Default, loss=7.37049913, MAE_E_per_atom=   43.86 meV, MAE_F=   14.32 meV / A
+2025-11-29 00:36:30.776 INFO: Epoch 49: head: Default, loss=7.36985254, MAE_E_per_atom=   43.79 meV, MAE_F=   14.31 meV / A
+2025-11-29 00:36:30.776 INFO: Changing loss based on Stage Two Weights
+2025-11-29 00:54:16.319 INFO: Epoch 50: head: Default, loss=0.57742959, MAE_E_per_atom=   39.54 meV, MAE_F=   29.95 meV / A
+2025-11-29 01:12:03.117 INFO: Epoch 51: head: Default, loss=0.38402632, MAE_E_per_atom=   29.50 meV, MAE_F=   35.53 meV / A
+2025-11-29 01:29:49.924 INFO: Epoch 52: head: Default, loss=0.36461741, MAE_E_per_atom=   27.93 meV, MAE_F=   34.56 meV / A
+2025-11-29 01:47:36.984 INFO: Epoch 53: head: Default, loss=0.36468130, MAE_E_per_atom=   26.08 meV, MAE_F=   35.32 meV / A
+2025-11-29 02:05:23.414 INFO: Epoch 54: head: Default, loss=0.33959979, MAE_E_per_atom=   24.30 meV, MAE_F=   34.88 meV / A
+2025-11-29 02:23:09.976 INFO: Epoch 55: head: Default, loss=0.33229125, MAE_E_per_atom=   23.25 meV, MAE_F=   34.45 meV / A
+2025-11-29 02:40:58.356 INFO: Epoch 56: head: Default, loss=0.34010577, MAE_E_per_atom=   22.51 meV, MAE_F=   34.03 meV / A
+2025-11-29 02:58:45.419 INFO: Epoch 57: head: Default, loss=0.32031575, MAE_E_per_atom=   21.88 meV, MAE_F=   33.46 meV / A
+2025-11-29 03:16:32.220 INFO: Epoch 58: head: Default, loss=0.31633523, MAE_E_per_atom=   22.14 meV, MAE_F=   33.45 meV / A
+2025-11-29 03:34:20.762 INFO: Epoch 59: head: Default, loss=0.34028685, MAE_E_per_atom=   20.96 meV, MAE_F=   34.33 meV / A
+2025-11-29 03:52:08.067 INFO: Epoch 60: head: Default, loss=0.30716282, MAE_E_per_atom=   20.77 meV, MAE_F=   32.24 meV / A
+2025-11-29 04:09:54.871 INFO: Epoch 61: head: Default, loss=0.43703145, MAE_E_per_atom=   20.98 meV, MAE_F=   34.05 meV / A
+2025-11-29 04:27:43.207 INFO: Epoch 62: head: Default, loss=0.35460868, MAE_E_per_atom=   20.43 meV, MAE_F=   33.36 meV / A
+2025-11-29 04:45:30.737 INFO: Epoch 63: head: Default, loss=0.30896685, MAE_E_per_atom=   20.01 meV, MAE_F=   31.75 meV / A
+2025-11-29 05:03:17.021 INFO: Epoch 64: head: Default, loss=0.29934856, MAE_E_per_atom=   20.16 meV, MAE_F=   31.43 meV / A
+2025-11-29 05:21:53.440 INFO: Epoch 65: head: Default, loss=0.29893252, MAE_E_per_atom=   19.92 meV, MAE_F=   30.73 meV / A
+2025-11-29 05:39:43.693 INFO: Epoch 66: head: Default, loss=0.29300007, MAE_E_per_atom=   19.49 meV, MAE_F=   31.31 meV / A
+2025-11-29 05:57:27.624 INFO: Epoch 67: head: Default, loss=0.29185212, MAE_E_per_atom=   19.77 meV, MAE_F=   30.94 meV / A
+2025-11-29 06:15:10.233 INFO: Epoch 68: head: Default, loss=0.28975034, MAE_E_per_atom=   19.46 meV, MAE_F=   29.83 meV / A
+2025-11-29 06:32:56.490 INFO: Epoch 69: head: Default, loss=0.28948495, MAE_E_per_atom=   19.00 meV, MAE_F=   31.00 meV / A
+2025-11-29 06:50:39.304 INFO: Epoch 70: head: Default, loss=0.28897569, MAE_E_per_atom=   19.33 meV, MAE_F=   30.92 meV / A
+2025-11-29 07:08:24.462 INFO: Epoch 71: head: Default, loss=0.28397253, MAE_E_per_atom=   19.02 meV, MAE_F=   30.98 meV / A
+2025-11-29 07:26:09.411 INFO: Epoch 72: head: Default, loss=0.28755715, MAE_E_per_atom=   19.00 meV, MAE_F=   30.74 meV / A
+2025-11-29 07:43:55.128 INFO: Epoch 73: head: Default, loss=0.28445888, MAE_E_per_atom=   18.85 meV, MAE_F=   30.02 meV / A
+2025-11-29 08:01:39.444 INFO: Epoch 74: head: Default, loss=0.31746680, MAE_E_per_atom=   18.99 meV, MAE_F=   31.74 meV / A
+2025-11-29 08:19:23.992 INFO: Epoch 75: head: Default, loss=0.29615957, MAE_E_per_atom=   18.90 meV, MAE_F=   31.78 meV / A
+2025-11-29 08:37:08.007 INFO: Epoch 76: head: Default, loss=0.29962295, MAE_E_per_atom=   19.05 meV, MAE_F=   31.40 meV / A
+2025-11-29 08:54:53.344 INFO: Epoch 77: head: Default, loss=0.28770897, MAE_E_per_atom=   18.50 meV, MAE_F=   31.11 meV / A
+2025-11-29 09:12:39.403 INFO: Epoch 78: head: Default, loss=0.29134348, MAE_E_per_atom=   18.26 meV, MAE_F=   31.68 meV / A
+2025-11-29 09:30:43.566 INFO: Epoch 79: head: Default, loss=0.28851575, MAE_E_per_atom=   18.27 meV, MAE_F=   31.70 meV / A
+2025-11-29 09:49:11.181 INFO: Epoch 80: head: Default, loss=0.29008716, MAE_E_per_atom=   18.87 meV, MAE_F=   31.25 meV / A
+2025-11-29 10:07:50.655 INFO: Epoch 81: head: Default, loss=0.28518164, MAE_E_per_atom=   18.53 meV, MAE_F=   31.25 meV / A
+2025-11-29 10:26:32.939 INFO: Epoch 82: head: Default, loss=0.28979373, MAE_E_per_atom=   18.23 meV, MAE_F=   31.62 meV / A
+2025-11-29 10:45:15.933 INFO: Epoch 83: head: Default, loss=0.28661013, MAE_E_per_atom=   18.29 meV, MAE_F=   31.29 meV / A
+2025-11-29 11:03:59.199 INFO: Epoch 84: head: Default, loss=0.29107413, MAE_E_per_atom=   19.33 meV, MAE_F=   30.57 meV / A
+2025-11-29 11:22:48.869 INFO: Epoch 85: head: Default, loss=0.28801087, MAE_E_per_atom=   17.95 meV, MAE_F=   30.91 meV / A
+2025-11-29 11:41:47.755 INFO: Epoch 86: head: Default, loss=0.28962618, MAE_E_per_atom=   18.93 meV, MAE_F=   30.67 meV / A
+2025-11-29 12:00:43.831 INFO: Epoch 87: head: Default, loss=0.29027700, MAE_E_per_atom=   18.64 meV, MAE_F=   30.99 meV / A
+2025-11-29 12:19:41.811 INFO: Epoch 88: head: Default, loss=0.28680304, MAE_E_per_atom=   18.33 meV, MAE_F=   31.09 meV / A
+2025-11-29 12:38:38.370 INFO: Epoch 89: head: Default, loss=0.28839511, MAE_E_per_atom=   18.14 meV, MAE_F=   30.64 meV / A
+2025-11-29 12:57:35.077 INFO: Epoch 90: head: Default, loss=0.28992605, MAE_E_per_atom=   18.39 meV, MAE_F=   31.15 meV / A
+2025-11-29 13:16:33.562 INFO: Epoch 91: head: Default, loss=0.28897917, MAE_E_per_atom=   18.36 meV, MAE_F=   30.47 meV / A
+2025-11-29 13:35:35.642 INFO: Epoch 92: head: Default, loss=0.28563434, MAE_E_per_atom=   17.99 meV, MAE_F=   31.33 meV / A
+2025-11-29 13:54:34.107 INFO: Epoch 93: head: Default, loss=0.28530678, MAE_E_per_atom=   18.21 meV, MAE_F=   30.36 meV / A
+2025-11-29 14:13:29.482 INFO: Epoch 94: head: Default, loss=0.28558969, MAE_E_per_atom=   18.15 meV, MAE_F=   30.55 meV / A
+2025-11-29 14:32:27.169 INFO: Epoch 95: head: Default, loss=0.28781188, MAE_E_per_atom=   18.09 meV, MAE_F=   30.72 meV / A
+2025-11-29 14:51:24.067 INFO: Epoch 96: head: Default, loss=0.28811187, MAE_E_per_atom=   18.03 meV, MAE_F=   30.84 meV / A
+2025-11-29 15:10:20.988 INFO: Epoch 97: head: Default, loss=0.29086927, MAE_E_per_atom=   18.10 meV, MAE_F=   31.01 meV / A
+2025-11-29 15:29:18.707 INFO: Epoch 98: head: Default, loss=0.28723350, MAE_E_per_atom=   17.79 meV, MAE_F=   30.68 meV / A
+2025-11-29 15:48:16.086 INFO: Epoch 99: head: Default, loss=0.28736395, MAE_E_per_atom=   18.00 meV, MAE_F=   30.28 meV / A
+2025-11-29 16:07:13.919 INFO: Epoch 100: head: Default, loss=0.28732452, MAE_E_per_atom=   17.98 meV, MAE_F=   30.05 meV / A
+2025-11-29 16:26:10.246 INFO: Epoch 101: head: Default, loss=0.28627783, MAE_E_per_atom=   18.05 meV, MAE_F=   29.95 meV / A
+2025-11-29 16:45:07.501 INFO: Epoch 102: head: Default, loss=0.28666329, MAE_E_per_atom=   17.96 meV, MAE_F=   30.83 meV / A
+2025-11-29 17:04:04.518 INFO: Epoch 103: head: Default, loss=0.28823850, MAE_E_per_atom=   18.00 meV, MAE_F=   30.50 meV / A
+2025-11-29 17:23:07.784 INFO: Epoch 104: head: Default, loss=0.28785494, MAE_E_per_atom=   18.11 meV, MAE_F=   30.15 meV / A
+2025-11-29 17:42:18.558 INFO: Epoch 105: head: Default, loss=0.28954428, MAE_E_per_atom=   18.01 meV, MAE_F=   30.92 meV / A
+2025-11-29 18:01:41.401 INFO: Epoch 106: head: Default, loss=0.28561744, MAE_E_per_atom=   17.99 meV, MAE_F=   30.31 meV / A
+2025-11-29 18:20:55.965 INFO: Epoch 107: head: Default, loss=0.29034391, MAE_E_per_atom=   18.17 meV, MAE_F=   30.93 meV / A
+2025-11-29 18:40:28.257 INFO: Epoch 108: head: Default, loss=0.28794634, MAE_E_per_atom=   18.28 meV, MAE_F=   30.22 meV / A
+2025-11-29 18:59:47.691 INFO: Epoch 109: head: Default, loss=0.28724575, MAE_E_per_atom=   17.82 meV, MAE_F=   30.79 meV / A
+2025-11-29 19:19:05.825 INFO: Epoch 110: head: Default, loss=0.29106849, MAE_E_per_atom=   17.92 meV, MAE_F=   31.26 meV / A
+2025-11-29 19:38:10.900 INFO: Epoch 111: head: Default, loss=0.28791294, MAE_E_per_atom=   17.80 meV, MAE_F=   31.27 meV / A
+2025-11-29 19:57:02.110 INFO: Epoch 112: head: Default, loss=0.28880531, MAE_E_per_atom=   18.00 meV, MAE_F=   30.45 meV / A
+2025-11-29 20:15:55.166 INFO: Epoch 113: head: Default, loss=0.29035169, MAE_E_per_atom=   17.95 meV, MAE_F=   30.83 meV / A
+2025-11-29 20:34:46.993 INFO: Epoch 114: head: Default, loss=0.29105914, MAE_E_per_atom=   18.17 meV, MAE_F=   31.30 meV / A
+2025-11-29 20:53:41.171 INFO: Epoch 115: head: Default, loss=0.28952810, MAE_E_per_atom=   17.91 meV, MAE_F=   31.07 meV / A
+2025-11-29 21:12:39.813 INFO: Epoch 116: head: Default, loss=0.28891087, MAE_E_per_atom=   18.07 meV, MAE_F=   30.98 meV / A
+2025-11-29 21:31:41.563 INFO: Epoch 117: head: Default, loss=0.28828889, MAE_E_per_atom=   17.71 meV, MAE_F=   31.10 meV / A
+2025-11-29 21:50:55.358 INFO: Epoch 118: head: Default, loss=0.29059106, MAE_E_per_atom=   17.62 meV, MAE_F=   31.66 meV / A
+2025-11-29 22:09:53.943 INFO: Epoch 119: head: Default, loss=0.28934258, MAE_E_per_atom=   17.54 meV, MAE_F=   32.53 meV / A
+2025-11-29 22:28:54.086 INFO: Epoch 120: head: Default, loss=0.29092312, MAE_E_per_atom=   17.93 meV, MAE_F=   31.32 meV / A
+2025-11-29 22:47:51.439 INFO: Epoch 121: head: Default, loss=0.29176894, MAE_E_per_atom=   17.96 meV, MAE_F=   32.10 meV / A
+2025-11-29 22:47:51.439 INFO: Stopping optimization after 50 epochs without improvement
+2025-11-29 22:47:51.439 INFO: Training complete
+2025-11-29 22:47:51.439 INFO: 
+2025-11-29 22:47:51.439 INFO: ===========RESULTS===========
+2025-11-29 22:48:08.211 INFO: Loading checkpoint: ./checkpoints/ODAC_MAXSEP_L_nos_run-123_epoch-32.pt
+/home/michal/.local/lib/python3.10/site-packages/mace/tools/checkpoint.py:187: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  torch.load(f=checkpoint_info.path, map_location=device),
+2025-11-29 22:48:08.260 INFO: Loaded Stage one model from epoch 32 for evaluation
+2025-11-29 22:48:08.260 INFO: Saving model to checkpoints/ODAC_MAXSEP_L_nos_run-123.model
+2025-11-29 22:48:08.453 INFO: Compiling model, saving metadata to ODAC_MAXSEP_L_nos_compiled.model
+2025-11-29 22:48:09.472 INFO: Computing metrics for training, validation, and test sets
+2025-11-29 22:48:09.474 INFO: Skipping evaluation for heads: ['pt_head']
+2025-11-29 22:48:09.474 INFO: Evaluating train_Default ...
+2025-11-29 23:14:44.164 INFO: Evaluating valid_Default ...
+2025-11-29 23:15:12.378 INFO: Error-table on TRAIN and VALID:
++---------------+--------------------+-----------------+------------------+
+|  config_type  | MAE E / meV / atom | MAE F / meV / A | relative F MAE % |
++---------------+--------------------+-----------------+------------------+
+| train_Default |          45.3      |         11.5    |        99.80     |
+| valid_Default |          43.4      |         14.3    |       100.10     |
++---------------+--------------------+-----------------+------------------+
+2025-11-29 23:15:12.378 INFO: Evaluating Default_Default ...
+2025-11-29 23:17:18.718 INFO: Error-table on TEST:
++-----------------+--------------------+-----------------+------------------+
+|   config_type   | MAE E / meV / atom | MAE F / meV / A | relative F MAE % |
++-----------------+--------------------+-----------------+------------------+
+| Default_Default |          43.9      |         12.2    |       100.75     |
++-----------------+--------------------+-----------------+------------------+
+2025-11-29 23:17:18.809 INFO: Loading checkpoint: ./checkpoints/ODAC_MAXSEP_L_nos_run-123_epoch-71_swa.pt
+2025-11-29 23:17:18.865 INFO: Loaded Stage two model from epoch 71 for evaluation
+2025-11-29 23:17:18.866 INFO: Saving model to checkpoints/ODAC_MAXSEP_L_nos_run-123_stagetwo.model
+2025-11-29 23:17:19.050 INFO: Compiling model, saving metadata ODAC_MAXSEP_L_nos_stagetwo_compiled.model
+2025-11-29 23:17:19.630 INFO: Computing metrics for training, validation, and test sets
+2025-11-29 23:17:19.638 INFO: Skipping evaluation for heads: ['pt_head']
+2025-11-29 23:17:19.638 INFO: Evaluating train_Default ...
+2025-11-29 23:43:25.828 INFO: Evaluating valid_Default ...
+2025-11-29 23:43:53.833 INFO: Error-table on TRAIN and VALID:
++---------------+--------------------+-----------------+------------------+
+|  config_type  | MAE E / meV / atom | MAE F / meV / A | relative F MAE % |
++---------------+--------------------+-----------------+------------------+
+| train_Default |          13.3      |         27.3    |       237.17     |
+| valid_Default |          19.0      |         31.0    |       217.01     |
++---------------+--------------------+-----------------+------------------+
+2025-11-29 23:43:53.833 INFO: Evaluating Default_Default ...
+2025-11-29 23:46:00.230 INFO: Error-table on TEST:
++-----------------+--------------------+-----------------+------------------+
+|   config_type   | MAE E / meV / atom | MAE F / meV / A | relative F MAE % |
++-----------------+--------------------+-----------------+------------------+
+| Default_Default |          16.2      |         29.6    |       243.51     |
++-----------------+--------------------+-----------------+------------------+
+2025-11-29 23:46:00.309 INFO: Done

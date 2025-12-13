@@ -1,0 +1,917 @@
+Found box in energy kwargs
+Remove replicated senders in neighbor list
+vectors /= r_cutoff Works
+receivers Works
+Use a custom scatter implementation
+Out irreps 320x0e+384x1o
+Irreps after layer are 64x1o
+Use a custom scatter implementation
+Out irreps 64x0e
+Irreps after layer are Irreps()
+Replicate potential outputs
+charges, elec_pot   work Traced<ShapedArray(float32[])>with<DynamicJaxprTrace(level=9/1)>
+[Potential] Found precomputed forces.
+Read out charge from aux.
+Found box in energy kwargs
+[Potential] Found precomputed forces.
+Read out charge from aux.
+[Epoch 0]:
+	Average train loss: 218.37441
+	Average val loss: 119.7696533203125
+	Gradient norm: 14570.623046875
+	Elapsed time = 4.924 min
+	Per-target losses:
+		U | train loss: 2183744.1792194485 | val loss: 1197696.5
+		charge | train loss: 22.298917377977666 | val loss: 22.108675003051758
+
+[Epoch 1]:
+	Average train loss: 100.25202
+	Average val loss: 85.3494644165039
+	Gradient norm: 31213.986328125
+	Elapsed time = 4.661 min
+	Per-target losses:
+		U | train loss: 1002520.2206156581 | val loss: 853494.6875
+		charge | train loss: 22.311435926755962 | val loss: 22.108675003051758
+
+[Epoch 2]:
+	Average train loss: 77.32583
+	Average val loss: 85.80108642578125
+	Gradient norm: 288303.8125
+	Elapsed time = 4.591 min
+	Per-target losses:
+		U | train loss: 773258.3155086366 | val loss: 858010.9375
+		charge | train loss: 22.29879197521185 | val loss: 22.108675003051758
+
+[Epoch 3]:
+	Average train loss: 62.34346
+	Average val loss: 59.02174377441406
+	Gradient norm: 667748.0
+	Elapsed time = 4.654 min
+	Per-target losses:
+		U | train loss: 623434.6073158288 | val loss: 590217.5
+		charge | train loss: 22.309929442832004 | val loss: 22.108675003051758
+
+[Epoch 4]:
+	Average train loss: 55.18018
+	Average val loss: 63.29560852050781
+	Gradient norm: 127688.2421875
+	Elapsed time = 4.641 min
+	Per-target losses:
+		U | train loss: 551801.8229408182 | val loss: 632956.0625
+		charge | train loss: 22.30839174988485 | val loss: 22.108675003051758
+
+[Epoch 5]:
+	Average train loss: 47.76124
+	Average val loss: 46.3424072265625
+	Gradient norm: 30920.294921875
+	Elapsed time = 4.600 min
+	Per-target losses:
+		U | train loss: 477612.38291513914 | val loss: 463424.0625
+		charge | train loss: 22.29056763264273 | val loss: 22.108675003051758
+
+[Epoch 6]:
+	Average train loss: 41.97176
+	Average val loss: 67.14412689208984
+	Gradient norm: 3529246.75
+	Elapsed time = 4.606 min
+	Per-target losses:
+		U | train loss: 419717.59692489286 | val loss: 671441.25
+		charge | train loss: 22.310274483073083 | val loss: 22.108675003051758
+
+[Epoch 7]:
+	Average train loss: 36.12720
+	Average val loss: 54.84330368041992
+	Gradient norm: 232914.0
+	Elapsed time = 4.540 min
+	Per-target losses:
+		U | train loss: 361271.9618190361 | val loss: 548433.0625
+		charge | train loss: 22.305484368506864 | val loss: 22.108675003051758
+
+[Epoch 8]:
+	Average train loss: 32.58172
+	Average val loss: 40.07659149169922
+	Gradient norm: 93425.2890625
+	Elapsed time = 4.601 min
+	Per-target losses:
+		U | train loss: 325817.1745845031 | val loss: 400765.90625
+		charge | train loss: 22.30432511394948 | val loss: 22.108675003051758
+
+[Epoch 9]:
+	Average train loss: 29.72187
+	Average val loss: 40.92901611328125
+	Gradient norm: 63705.015625
+	Elapsed time = 4.564 min
+	Per-target losses:
+		U | train loss: 297218.7185680391 | val loss: 409290.1875
+		charge | train loss: 22.309790391044434 | val loss: 22.108675003051758
+
+[Epoch 10]:
+	Average train loss: 27.32856
+	Average val loss: 34.27291488647461
+	Gradient norm: 83377.6484375
+	Elapsed time = 4.547 min
+	Per-target losses:
+		U | train loss: 273285.5574747278 | val loss: 342729.15625
+		charge | train loss: 22.299722632829457 | val loss: 22.108675003051758
+
+[Epoch 11]:
+	Average train loss: 24.89676
+	Average val loss: 29.422786712646484
+	Gradient norm: 9565.447265625
+	Elapsed time = 4.611 min
+	Per-target losses:
+		U | train loss: 248967.63214183197 | val loss: 294227.84375
+		charge | train loss: 22.28797162655291 | val loss: 22.108675003051758
+
+[Epoch 12]:
+	Average train loss: 23.38002
+	Average val loss: 29.074100494384766
+	Gradient norm: 1110269.75
+	Elapsed time = 4.650 min
+	Per-target losses:
+		U | train loss: 233800.2072185345 | val loss: 290741.0
+		charge | train loss: 22.31338579478973 | val loss: 22.108675003051758
+
+[Epoch 13]:
+	Average train loss: 21.56374
+	Average val loss: 26.946765899658203
+	Gradient norm: 9086.98046875
+	Elapsed time = 4.608 min
+	Per-target losses:
+		U | train loss: 215637.42382482436 | val loss: 269467.6875
+		charge | train loss: 22.306919313132166 | val loss: 22.108675003051758
+
+[Epoch 14]:
+	Average train loss: 19.42694
+	Average val loss: 23.866926193237305
+	Gradient norm: 54736.3828125
+	Elapsed time = 4.592 min
+	Per-target losses:
+		U | train loss: 194269.35646575515 | val loss: 238669.28125
+		charge | train loss: 22.300652436798334 | val loss: 22.108675003051758
+
+[Epoch 15]:
+	Average train loss: 19.14489
+	Average val loss: 25.58921241760254
+	Gradient norm: 136280.140625
+	Elapsed time = 4.483 min
+	Per-target losses:
+		U | train loss: 191448.928785468 | val loss: 255892.125
+		charge | train loss: 22.317912820432575 | val loss: 22.108675003051758
+
+[Epoch 16]:
+	Average train loss: 17.14336
+	Average val loss: 29.437868118286133
+	Gradient norm: 10653.92578125
+	Elapsed time = 4.631 min
+	Per-target losses:
+		U | train loss: 171433.63680648306 | val loss: 294378.6875
+		charge | train loss: 22.293572637122946 | val loss: 22.108675003051758
+
+[Epoch 17]:
+	Average train loss: 16.10707
+	Average val loss: 27.815696716308594
+	Gradient norm: 351229.9375
+	Elapsed time = 4.619 min
+	Per-target losses:
+		U | train loss: 161070.7525533617 | val loss: 278156.96875
+		charge | train loss: 22.31160724771319 | val loss: 22.108675003051758
+
+[Epoch 18]:
+	Average train loss: 16.06873
+	Average val loss: 22.14033317565918
+	Gradient norm: 908622.0625
+	Elapsed time = 4.640 min
+	Per-target losses:
+		U | train loss: 160687.32288497346 | val loss: 221403.34375
+		charge | train loss: 22.299981761072278 | val loss: 22.108675003051758
+
+[Epoch 19]:
+	Average train loss: 14.96374
+	Average val loss: 20.41649627685547
+	Gradient norm: 16752.970703125
+	Elapsed time = 4.629 min
+	Per-target losses:
+		U | train loss: 149637.38417108456 | val loss: 204164.96875
+		charge | train loss: 22.288408511079037 | val loss: 22.108675003051758
+
+[Epoch 20]:
+	Average train loss: 14.53298
+	Average val loss: 20.211984634399414
+	Gradient norm: 106129.078125
+	Elapsed time = 4.622 min
+	Per-target losses:
+		U | train loss: 145329.77725846582 | val loss: 202119.859375
+		charge | train loss: 22.310527080747168 | val loss: 22.108675003051758
+
+[Epoch 21]:
+	Average train loss: 13.59793
+	Average val loss: 21.305402755737305
+	Gradient norm: 10928.3876953125
+	Elapsed time = 4.651 min
+	Per-target losses:
+		U | train loss: 135979.2667311391 | val loss: 213054.046875
+		charge | train loss: 22.29324789583761 | val loss: 22.108675003051758
+
+[Epoch 22]:
+	Average train loss: 13.16431
+	Average val loss: 24.70159339904785
+	Gradient norm: 12278.392578125
+	Elapsed time = 4.626 min
+	Per-target losses:
+		U | train loss: 131643.0761035731 | val loss: 247015.9375
+		charge | train loss: 22.33539290413605 | val loss: 22.108675003051758
+
+[Epoch 23]:
+	Average train loss: 12.44511
+	Average val loss: 21.991168975830078
+	Gradient norm: 2620.90966796875
+	Elapsed time = 4.603 min
+	Per-target losses:
+		U | train loss: 124451.1019990624 | val loss: 219911.6875
+		charge | train loss: 22.284878477694633 | val loss: 22.108675003051758
+
+[Epoch 24]:
+	Average train loss: 11.50376
+	Average val loss: 20.053003311157227
+	Gradient norm: 1498.6282958984375
+	Elapsed time = 4.558 min
+	Per-target losses:
+		U | train loss: 115037.60797340736 | val loss: 200530.046875
+		charge | train loss: 22.313703081361393 | val loss: 22.108675003051758
+
+[Epoch 25]:
+	Average train loss: 11.41833
+	Average val loss: 19.550058364868164
+	Gradient norm: 24487.62890625
+	Elapsed time = 4.123 min
+	Per-target losses:
+		U | train loss: 114183.31102299181 | val loss: 195500.578125
+		charge | train loss: 22.30524197240298 | val loss: 22.108675003051758
+
+[Epoch 26]:
+	Average train loss: 10.69790
+	Average val loss: 19.928028106689453
+	Gradient norm: 47727.19921875
+	Elapsed time = 4.617 min
+	Per-target losses:
+		U | train loss: 106978.95541290003 | val loss: 199280.296875
+		charge | train loss: 22.317927760221114 | val loss: 22.108675003051758
+
+[Epoch 27]:
+	Average train loss: 10.40888
+	Average val loss: 20.885618209838867
+	Gradient norm: 1634.02197265625
+	Elapsed time = 4.644 min
+	Per-target losses:
+		U | train loss: 104088.79388686595 | val loss: 208856.1875
+		charge | train loss: 22.271324515602654 | val loss: 22.108675003051758
+
+[Epoch 28]:
+	Average train loss: 9.87657
+	Average val loss: 19.83729362487793
+	Gradient norm: 681983.5
+	Elapsed time = 4.656 min
+	Per-target losses:
+		U | train loss: 98765.71588424902 | val loss: 198372.9375
+		charge | train loss: 22.304468747990338 | val loss: 22.108675003051758
+
+[Epoch 29]:
+	Average train loss: 9.78062
+	Average val loss: 18.10335922241211
+	Gradient norm: 8055.90625
+	Elapsed time = 4.658 min
+	Per-target losses:
+		U | train loss: 97806.228057675 | val loss: 181033.609375
+		charge | train loss: 22.303748916654257 | val loss: 22.108675003051758
+
+[Epoch 30]:
+	Average train loss: 9.04180
+	Average val loss: 19.61275291442871
+	Gradient norm: 2090.1005859375
+	Elapsed time = 4.625 min
+	Per-target losses:
+		U | train loss: 90418.03171749256 | val loss: 196127.546875
+		charge | train loss: 22.305038914428856 | val loss: 22.108675003051758
+
+[Epoch 31]:
+	Average train loss: 8.44576
+	Average val loss: 16.775976181030273
+	Gradient norm: 248937.859375
+	Elapsed time = 4.624 min
+	Per-target losses:
+		U | train loss: 84457.64207822623 | val loss: 167759.765625
+		charge | train loss: 22.326862604504736 | val loss: 22.108675003051758
+
+[Epoch 32]:
+	Average train loss: 8.39377
+	Average val loss: 17.25240135192871
+	Gradient norm: 257708.546875
+	Elapsed time = 4.585 min
+	Per-target losses:
+		U | train loss: 83937.73129180628 | val loss: 172524.015625
+		charge | train loss: 22.254942114156663 | val loss: 22.108675003051758
+
+[Epoch 33]:
+	Average train loss: 8.26106
+	Average val loss: 17.59581756591797
+	Gradient norm: 8018.6552734375
+	Elapsed time = 4.597 min
+	Per-target losses:
+		U | train loss: 82610.60952291642 | val loss: 175958.171875
+		charge | train loss: 22.353929951780497 | val loss: 22.108675003051758
+
+[Epoch 34]:
+	Average train loss: 7.76256
+	Average val loss: 17.675870895385742
+	Gradient norm: 160783.859375
+	Elapsed time = 4.477 min
+	Per-target losses:
+		U | train loss: 77625.61800772147 | val loss: 176758.71875
+		charge | train loss: 22.308515995909854 | val loss: 22.108675003051758
+
+[Epoch 35]:
+	Average train loss: 7.64654
+	Average val loss: 19.104381561279297
+	Gradient norm: 298883.78125
+	Elapsed time = 4.602 min
+	Per-target losses:
+		U | train loss: 76465.388864909 | val loss: 191043.8125
+		charge | train loss: 22.290502882398897 | val loss: 22.108675003051758
+
+[Epoch 36]:
+	Average train loss: 7.19486
+	Average val loss: 16.169137954711914
+	Gradient norm: 35495.63671875
+	Elapsed time = 4.534 min
+	Per-target losses:
+		U | train loss: 71948.64932582372 | val loss: 161691.390625
+		charge | train loss: 22.298078124199794 | val loss: 22.108675003051758
+
+[Epoch 37]:
+	Average train loss: 7.01711
+	Average val loss: 16.4890193939209
+	Gradient norm: 404518.9375
+	Elapsed time = 4.448 min
+	Per-target losses:
+		U | train loss: 70171.10367048874 | val loss: 164890.203125
+		charge | train loss: 22.31891062474906 | val loss: 22.108675003051758
+
+[Epoch 38]:
+	Average train loss: 6.68215
+	Average val loss: 16.82066535949707
+	Gradient norm: 7656.20361328125
+	Elapsed time = 4.611 min
+	Per-target losses:
+		U | train loss: 66821.4814652228 | val loss: 168206.65625
+		charge | train loss: 22.283192266712945 | val loss: 22.108675003051758
+
+[Epoch 39]:
+	Average train loss: 6.60518
+	Average val loss: 17.78926658630371
+	Gradient norm: 24182.203125
+	Elapsed time = 4.608 min
+	Per-target losses:
+		U | train loss: 66051.85107505722 | val loss: 177892.671875
+		charge | train loss: 22.339845655685007 | val loss: 22.108675003051758
+
+[Epoch 40]:
+	Average train loss: 6.24005
+	Average val loss: 15.688416481018066
+	Gradient norm: 17398.271484375
+	Elapsed time = 4.555 min
+	Per-target losses:
+		U | train loss: 62400.5371523232 | val loss: 156884.15625
+		charge | train loss: 22.279282352573947 | val loss: 22.108675003051758
+
+[Epoch 41]:
+	Average train loss: 6.23250
+	Average val loss: 15.608842849731445
+	Gradient norm: 2051.828125
+	Elapsed time = 4.583 min
+	Per-target losses:
+		U | train loss: 62325.002807430865 | val loss: 156088.4375
+		charge | train loss: 22.288697035199316 | val loss: 22.108675003051758
+
+[Epoch 42]:
+	Average train loss: 5.79703
+	Average val loss: 16.267845153808594
+	Gradient norm: 42925.1015625
+	Elapsed time = 4.539 min
+	Per-target losses:
+		U | train loss: 57970.32265963182 | val loss: 162678.453125
+		charge | train loss: 22.328617954378924 | val loss: 22.108675003051758
+
+[Epoch 43]:
+	Average train loss: 5.52517
+	Average val loss: 15.549832344055176
+	Gradient norm: 1174.36328125
+	Elapsed time = 4.579 min
+	Per-target losses:
+		U | train loss: 55251.74754321518 | val loss: 155498.34375
+		charge | train loss: 22.275423892346 | val loss: 22.108675003051758
+
+[Epoch 44]:
+	Average train loss: 5.40180
+	Average val loss: 16.381685256958008
+	Gradient norm: 10383.9677734375
+	Elapsed time = 4.578 min
+	Per-target losses:
+		U | train loss: 54017.95391893615 | val loss: 163816.84375
+		charge | train loss: 22.315856497723413 | val loss: 22.108675003051758
+
+[Epoch 45]:
+	Average train loss: 5.45082
+	Average val loss: 15.50253963470459
+	Gradient norm: 6167.20849609375
+	Elapsed time = 4.410 min
+	Per-target losses:
+		U | train loss: 54508.21074149809 | val loss: 155025.40625
+		charge | train loss: 22.305436094411323 | val loss: 22.108675003051758
+
+[Epoch 46]:
+	Average train loss: 5.12417
+	Average val loss: 16.03861427307129
+	Gradient norm: 798.8529663085938
+	Elapsed time = 4.520 min
+	Per-target losses:
+		U | train loss: 51241.7198791637 | val loss: 160386.140625
+		charge | train loss: 22.292594661579557 | val loss: 22.108675003051758
+
+[Epoch 47]:
+	Average train loss: 5.01767
+	Average val loss: 16.17241859436035
+	Gradient norm: 13666.7685546875
+	Elapsed time = 4.628 min
+	Per-target losses:
+		U | train loss: 50176.70371658585 | val loss: 161724.1875
+		charge | train loss: 22.339711861167473 | val loss: 22.108675003051758
+
+[Epoch 48]:
+	Average train loss: 4.91644
+	Average val loss: 15.965800285339355
+	Gradient norm: 9008.9990234375
+	Elapsed time = 4.201 min
+	Per-target losses:
+		U | train loss: 49164.4007406921 | val loss: 159658.015625
+		charge | train loss: 22.291899754706815 | val loss: 22.108675003051758
+
+[Epoch 49]:
+	Average train loss: 4.76967
+	Average val loss: 16.019458770751953
+	Gradient norm: 94008.265625
+	Elapsed time = 4.443 min
+	Per-target losses:
+		U | train loss: 47696.739128169356 | val loss: 160194.578125
+		charge | train loss: 22.283490334854758 | val loss: 22.108675003051758
+
+[Epoch 50]:
+	Average train loss: 4.50524
+	Average val loss: 15.615750312805176
+	Gradient norm: 71595.046875
+	Elapsed time = 4.661 min
+	Per-target losses:
+		U | train loss: 45052.43807405787 | val loss: 156157.515625
+		charge | train loss: 22.345729521565495 | val loss: 22.108675003051758
+
+[Epoch 51]:
+	Average train loss: 4.41293
+	Average val loss: 15.183698654174805
+	Gradient norm: 20238.357421875
+	Elapsed time = 4.641 min
+	Per-target losses:
+		U | train loss: 44129.318420124015 | val loss: 151836.984375
+		charge | train loss: 22.27098541035176 | val loss: 22.108675003051758
+
+[Epoch 52]:
+	Average train loss: 4.28604
+	Average val loss: 15.206276893615723
+	Gradient norm: 18035.013671875
+	Elapsed time = 4.659 min
+	Per-target losses:
+		U | train loss: 42860.37898251733 | val loss: 152062.765625
+		charge | train loss: 22.275776047296937 | val loss: 22.108675003051758
+
+[Epoch 53]:
+	Average train loss: 4.10937
+	Average val loss: 15.594754219055176
+	Gradient norm: 2483.6953125
+	Elapsed time = 4.626 min
+	Per-target losses:
+		U | train loss: 41093.70430741308 | val loss: 155947.5625
+		charge | train loss: 22.333808216006798 | val loss: 22.108675003051758
+
+[Epoch 54]:
+	Average train loss: 3.98688
+	Average val loss: 15.101513862609863
+	Gradient norm: 34306.74609375
+	Elapsed time = 4.686 min
+	Per-target losses:
+		U | train loss: 39868.76405414327 | val loss: 151015.140625
+		charge | train loss: 22.28007322744776 | val loss: 22.108675003051758
+
+[Epoch 55]:
+	Average train loss: 3.89176
+	Average val loss: 16.051237106323242
+	Gradient norm: 162255.109375
+	Elapsed time = 4.683 min
+	Per-target losses:
+		U | train loss: 38917.64966019948 | val loss: 160512.390625
+		charge | train loss: 22.269659428527874 | val loss: 22.108675003051758
+
+[Epoch 56]:
+	Average train loss: 3.73770
+	Average val loss: 14.995558738708496
+	Gradient norm: 5208.228515625
+	Elapsed time = 4.292 min
+	Per-target losses:
+		U | train loss: 37376.95810205033 | val loss: 149955.609375
+		charge | train loss: 22.31844527181766 | val loss: 22.108675003051758
+
+[Epoch 57]:
+	Average train loss: 3.64791
+	Average val loss: 15.515485763549805
+	Gradient norm: 2338.539306640625
+	Elapsed time = 4.677 min
+	Per-target losses:
+		U | train loss: 36479.08540891905 | val loss: 155154.859375
+		charge | train loss: 22.33788610409297 | val loss: 22.108675003051758
+
+[Epoch 58]:
+	Average train loss: 3.52768
+	Average val loss: 15.533509254455566
+	Gradient norm: 1422.746337890625
+	Elapsed time = 4.492 min
+	Per-target losses:
+		U | train loss: 35276.774288432025 | val loss: 155335.09375
+		charge | train loss: 22.300829217156313 | val loss: 22.108675003051758
+
+[Epoch 59]:
+	Average train loss: 3.46775
+	Average val loss: 16.031923294067383
+	Gradient norm: 9481.90234375
+	Elapsed time = 4.349 min
+	Per-target losses:
+		U | train loss: 34677.5306211489 | val loss: 160319.25
+		charge | train loss: 22.34296482824832 | val loss: 22.108675003051758
+
+[Epoch 60]:
+	Average train loss: 3.37213
+	Average val loss: 15.356595039367676
+	Gradient norm: 1254.7030029296875
+	Elapsed time = 4.029 min
+	Per-target losses:
+		U | train loss: 33721.33785670032 | val loss: 153565.953125
+		charge | train loss: 22.293291787315134 | val loss: 22.108675003051758
+
+[Epoch 61]:
+	Average train loss: 3.23059
+	Average val loss: 14.934102058410645
+	Gradient norm: 3818.5185546875
+	Elapsed time = 4.590 min
+	Per-target losses:
+		U | train loss: 32305.897147829543 | val loss: 149341.015625
+		charge | train loss: 22.294858123764325 | val loss: 22.108675003051758
+
+[Epoch 62]:
+	Average train loss: 3.17397
+	Average val loss: 15.58712387084961
+	Gradient norm: 21374.7734375
+	Elapsed time = 4.686 min
+	Per-target losses:
+		U | train loss: 31739.747935997573 | val loss: 155871.25
+		charge | train loss: 22.26517108408998 | val loss: 22.108675003051758
+
+[Epoch 63]:
+	Average train loss: 3.09386
+	Average val loss: 15.380516052246094
+	Gradient norm: 25138.8984375
+	Elapsed time = 4.677 min
+	Per-target losses:
+		U | train loss: 30938.554120569108 | val loss: 153805.15625
+		charge | train loss: 22.36649955457545 | val loss: 22.108675003051758
+
+[Epoch 64]:
+	Average train loss: 3.01620
+	Average val loss: 14.53129768371582
+	Gradient norm: 8976.630859375
+	Elapsed time = 4.528 min
+	Per-target losses:
+		U | train loss: 30162.000936808465 | val loss: 145312.96875
+		charge | train loss: 22.288139278172302 | val loss: 22.108675003051758
+
+[Epoch 65]:
+	Average train loss: 2.98181
+	Average val loss: 15.147994995117188
+	Gradient norm: 5733.65673828125
+	Elapsed time = 4.569 min
+	Per-target losses:
+		U | train loss: 29818.085323555002 | val loss: 151479.9375
+		charge | train loss: 22.28959880704917 | val loss: 22.108675003051758
+
+[Epoch 66]:
+	Average train loss: 2.88263
+	Average val loss: 15.061012268066406
+	Gradient norm: 21192.544921875
+	Elapsed time = 4.603 min
+	Per-target losses:
+		U | train loss: 28826.33661774387 | val loss: 150610.125
+		charge | train loss: 22.2977922953636 | val loss: 22.108675003051758
+
+[Epoch 67]:
+	Average train loss: 2.75814
+	Average val loss: 14.633880615234375
+	Gradient norm: 6401.31103515625
+	Elapsed time = 4.582 min
+	Per-target losses:
+		U | train loss: 27581.361833015904 | val loss: 146338.8125
+		charge | train loss: 22.27193722785221 | val loss: 22.108675003051758
+
+[Epoch 68]:
+	Average train loss: 2.80026
+	Average val loss: 14.936210632324219
+	Gradient norm: 21935.21484375
+	Elapsed time = 4.409 min
+	Per-target losses:
+		U | train loss: 28002.602563071967 | val loss: 149362.109375
+		charge | train loss: 22.345111478430393 | val loss: 22.108675003051758
+
+[Epoch 69]:
+	Average train loss: 2.71154
+	Average val loss: 14.696100234985352
+	Gradient norm: 1961.205322265625
+	Elapsed time = 4.636 min
+	Per-target losses:
+		U | train loss: 27115.413842921167 | val loss: 146961.015625
+		charge | train loss: 22.313639603584445 | val loss: 22.108675003051758
+
+[Epoch 70]:
+	Average train loss: 2.62836
+	Average val loss: 15.075857162475586
+	Gradient norm: 2883.970947265625
+	Elapsed time = 4.661 min
+	Per-target losses:
+		U | train loss: 26283.608990435925 | val loss: 150758.578125
+		charge | train loss: 22.276996541636716 | val loss: 22.108675003051758
+
+[Epoch 71]:
+	Average train loss: 2.58694
+	Average val loss: 14.712099075317383
+	Gradient norm: 7969.77001953125
+	Elapsed time = 4.267 min
+	Per-target losses:
+		U | train loss: 25869.3751113865 | val loss: 147121.0
+		charge | train loss: 22.31805294172451 | val loss: 22.108675003051758
+
+[Epoch 72]:
+	Average train loss: 2.57324
+	Average val loss: 14.92624568939209
+	Gradient norm: 109821.9453125
+	Elapsed time = 4.532 min
+	Per-target losses:
+		U | train loss: 25732.42860063236 | val loss: 149262.453125
+		charge | train loss: 22.278358963135805 | val loss: 22.108675003051758
+
+[Epoch 73]:
+	Average train loss: 2.47633
+	Average val loss: 14.819063186645508
+	Gradient norm: 4791.26611328125
+	Elapsed time = 4.369 min
+	Per-target losses:
+		U | train loss: 24763.27488814968 | val loss: 148190.625
+		charge | train loss: 22.3296313980392 | val loss: 22.108675003051758
+
+[Epoch 74]:
+	Average train loss: 2.44944
+	Average val loss: 14.645661354064941
+	Gradient norm: 92.50740814208984
+	Elapsed time = 4.631 min
+	Per-target losses:
+		U | train loss: 24494.395319263644 | val loss: 146456.609375
+		charge | train loss: 22.260995761307367 | val loss: 22.108675003051758
+
+[Epoch 75]:
+	Average train loss: 2.39514
+	Average val loss: 14.868426322937012
+	Gradient norm: 5173.5341796875
+	Elapsed time = 4.653 min
+	Per-target losses:
+		U | train loss: 23951.367452602328 | val loss: 148684.265625
+		charge | train loss: 22.364695861149293 | val loss: 22.108675003051758
+
+[Epoch 76]:
+	Average train loss: 2.34455
+	Average val loss: 15.016551971435547
+	Gradient norm: 2995.720458984375
+	Elapsed time = 4.569 min
+	Per-target losses:
+		U | train loss: 23445.5313925662 | val loss: 150165.515625
+		charge | train loss: 22.24480338082062 | val loss: 22.108675003051758
+
+[Epoch 77]:
+	Average train loss: 2.32918
+	Average val loss: 14.988585472106934
+	Gradient norm: 50376.91015625
+	Elapsed time = 4.636 min
+	Per-target losses:
+		U | train loss: 23291.817377036386 | val loss: 149885.859375
+		charge | train loss: 22.335746590871764 | val loss: 22.108675003051758
+
+[Epoch 78]:
+	Average train loss: 2.30840
+	Average val loss: 15.107649803161621
+	Gradient norm: 26690.37109375
+	Elapsed time = 4.628 min
+	Per-target losses:
+		U | train loss: 23083.997927120457 | val loss: 151076.5
+		charge | train loss: 22.33198344109623 | val loss: 22.108675003051758
+
+[Epoch 79]:
+	Average train loss: 2.24259
+	Average val loss: 14.897907257080078
+	Gradient norm: 4673.08642578125
+	Elapsed time = 4.721 min
+	Per-target losses:
+		U | train loss: 22425.940938597727 | val loss: 148979.078125
+		charge | train loss: 22.32644427534903 | val loss: 22.108675003051758
+
+[Epoch 80]:
+	Average train loss: 2.23862
+	Average val loss: 14.826025009155273
+	Gradient norm: 920.8128051757812
+	Elapsed time = 4.631 min
+	Per-target losses:
+		U | train loss: 22386.19160551927 | val loss: 148260.25
+		charge | train loss: 22.262995178191048 | val loss: 22.108675003051758
+
+[Epoch 81]:
+	Average train loss: 2.21310
+	Average val loss: 15.060891151428223
+	Gradient norm: 6173.3193359375
+	Elapsed time = 4.632 min
+	Per-target losses:
+		U | train loss: 22130.97026909796 | val loss: 150608.921875
+		charge | train loss: 22.333204037125228 | val loss: 22.108675003051758
+
+[Epoch 82]:
+	Average train loss: 2.16727
+	Average val loss: 14.897385597229004
+	Gradient norm: 9558.0361328125
+	Elapsed time = 4.626 min
+	Per-target losses:
+		U | train loss: 21672.73690129782 | val loss: 148973.859375
+		charge | train loss: 22.253689300114548 | val loss: 22.108675003051758
+
+[Epoch 83]:
+	Average train loss: 2.15892
+	Average val loss: 14.958999633789062
+	Gradient norm: 5314.17578125
+	Elapsed time = 4.604 min
+	Per-target losses:
+		U | train loss: 21589.1835640476 | val loss: 149590.0
+		charge | train loss: 22.323961313666082 | val loss: 22.108675003051758
+
+[Epoch 84]:
+	Average train loss: 2.14501
+	Average val loss: 14.971927642822266
+	Gradient norm: 5888.72119140625
+	Elapsed time = 4.606 min
+	Per-target losses:
+		U | train loss: 21450.05100211648 | val loss: 149719.28125
+		charge | train loss: 22.239946687684224 | val loss: 22.108675003051758
+
+[Epoch 85]:
+	Average train loss: 2.10282
+	Average val loss: 14.895896911621094
+	Gradient norm: 719.8521118164062
+	Elapsed time = 4.494 min
+	Per-target losses:
+		U | train loss: 21028.204160514793 | val loss: 148958.96875
+		charge | train loss: 22.338617315263246 | val loss: 22.108675003051758
+
+[Epoch 86]:
+	Average train loss: 2.09264
+	Average val loss: 14.828407287597656
+	Gradient norm: 17503.275390625
+	Elapsed time = 4.542 min
+	Per-target losses:
+		U | train loss: 20926.423169162248 | val loss: 148284.078125
+		charge | train loss: 22.34909079951383 | val loss: 22.108675003051758
+
+[Epoch 87]:
+	Average train loss: 2.04421
+	Average val loss: 14.912606239318848
+	Gradient norm: 15041.0947265625
+	Elapsed time = 4.641 min
+	Per-target losses:
+		U | train loss: 20442.076675701184 | val loss: 149126.0625
+		charge | train loss: 22.293047052151348 | val loss: 22.108675003051758
+
+[Epoch 88]:
+	Average train loss: 2.08596
+	Average val loss: 14.86732292175293
+	Gradient norm: 33130.05078125
+	Elapsed time = 4.606 min
+	Per-target losses:
+		U | train loss: 20859.611540849688 | val loss: 148673.234375
+		charge | train loss: 22.304634400345694 | val loss: 22.108675003051758
+
+[Epoch 89]:
+	Average train loss: 2.05408
+	Average val loss: 14.931632995605469
+	Gradient norm: 32286.7890625
+	Elapsed time = 4.710 min
+	Per-target losses:
+		U | train loss: 20540.823170245603 | val loss: 149316.328125
+		charge | train loss: 22.30194756894251 | val loss: 22.108675003051758
+
+[Epoch 90]:
+	Average train loss: 2.03175
+	Average val loss: 14.871898651123047
+	Gradient norm: 15060.708984375
+	Elapsed time = 4.607 min
+	Per-target losses:
+		U | train loss: 20317.461244173046 | val loss: 148718.984375
+		charge | train loss: 22.317645295239203 | val loss: 22.108675003051758
+
+[Epoch 91]:
+	Average train loss: 2.02329
+	Average val loss: 14.86287784576416
+	Gradient norm: 40114.1328125
+	Elapsed time = 4.455 min
+	Per-target losses:
+		U | train loss: 20232.853094973525 | val loss: 148628.796875
+		charge | train loss: 22.296266826333515 | val loss: 22.108675003051758
+
+[Epoch 92]:
+	Average train loss: 2.01563
+	Average val loss: 14.858336448669434
+	Gradient norm: 4296.333984375
+	Elapsed time = 4.699 min
+	Per-target losses:
+		U | train loss: 20156.332590980714 | val loss: 148583.375
+		charge | train loss: 22.321893031556588 | val loss: 22.108675003051758
+
+[Epoch 93]:
+	Average train loss: 2.00420
+	Average val loss: 14.906877517700195
+	Gradient norm: 7380.677734375
+	Elapsed time = 4.469 min
+	Per-target losses:
+		U | train loss: 20042.023290734804 | val loss: 149068.78125
+		charge | train loss: 22.301127419636025 | val loss: 22.108675003051758
+
+[Epoch 94]:
+	Average train loss: 1.99170
+	Average val loss: 14.866597175598145
+	Gradient norm: 2078.71435546875
+	Elapsed time = 4.715 min
+	Per-target losses:
+		U | train loss: 19916.986717114323 | val loss: 148665.96875
+		charge | train loss: 22.262561903943986 | val loss: 22.108675003051758
+
+[Epoch 95]:
+	Average train loss: 2.00978
+	Average val loss: 14.871356964111328
+	Gradient norm: 8286.2919921875
+	Elapsed time = 4.646 min
+	Per-target losses:
+		U | train loss: 20097.82007800841 | val loss: 148713.578125
+		charge | train loss: 22.29990599927973 | val loss: 22.108675003051758
+
+[Epoch 96]:
+	Average train loss: 1.97649
+	Average val loss: 14.870025634765625
+	Gradient norm: 26403.720703125
+	Elapsed time = 4.030 min
+	Per-target losses:
+		U | train loss: 19764.932625317648 | val loss: 148700.265625
+		charge | train loss: 22.285365904879995 | val loss: 22.108675003051758
+
+[Epoch 97]:
+	Average train loss: 1.99419
+	Average val loss: 14.8766450881958
+	Gradient norm: 18617.603515625
+	Elapsed time = 4.388 min
+	Per-target losses:
+		U | train loss: 19941.88327199842 | val loss: 148766.453125
+		charge | train loss: 22.335641633668843 | val loss: 22.108675003051758
+
+[Epoch 98]:
+	Average train loss: 1.89258
+	Average val loss: 14.875405311584473
+	Gradient norm: 920.5640869140625
+	Elapsed time = 4.654 min
+	Per-target losses:
+		U | train loss: 18925.79335604242 | val loss: 148754.046875
+		charge | train loss: 22.266563513889306 | val loss: 22.108675003051758
+
+[Epoch 99]:
+	Average train loss: 2.06948
+	Average val loss: 14.881117820739746
+	Gradient norm: 7527.869140625
+	Elapsed time = 4.658 min
+	Per-target losses:
+		U | train loss: 20694.84493929717 | val loss: 148811.171875
+		charge | train loss: 22.327679251667927 | val loss: 22.108675003051758
+
