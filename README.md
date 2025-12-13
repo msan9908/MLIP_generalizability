@@ -1,6 +1,6 @@
 # Supporting Information
 
-This repository contains the Supporting Information code for:
+This repository contains the Supporting Information code for: XXXXXXXX
 
 
 
@@ -19,4 +19,6 @@ Information on Datasets utilized in this study is availble at:
 
 ## Training
 
-Each split trained on the QMOF dataset has seperate training split, wheraas model trined on OMOL25 and ODAC25 utilize 
+Each split trained on the QMOF dataset has seperate training split, wheraes split for models trined on OMOL25 and ODAC25 has to be specified using command line (path fro maxsep and cluster splits or seed for random, for size split --sl True)
+
+
