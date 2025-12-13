@@ -1,0 +1,69 @@
+Found box in energy kwargs
+[Potential] Found precomputed forces.
+Read out charge from aux.
+Found box in energy kwargs
+[Potential] Found precomputed forces.
+Read out charge from aux.
+[Epoch 0]:
+	Average train loss: 241.71160
+	Average val loss: 236.47955322265625
+	Gradient norm: 0.0
+	Elapsed time = 6.208 min
+	Per-target losses:
+		U | train loss: 2730337.8041841444 | val loss: 2654200.25
+		charge | train loss: 24.171160028124817 | val loss: 23.6479549407959
+
+[Epoch 1]:
+	Average train loss: 241.92098
+	Average val loss: 236.47955322265625
+	Gradient norm: 0.0
+	Elapsed time = 5.703 min
+	Per-target losses:
+		U | train loss: 2725804.99998427 | val loss: 2654197.0
+		charge | train loss: 24.19209836921436 | val loss: 23.6479549407959
+
+[Epoch 2]:
+	Average train loss: 241.67894
+	Average val loss: 236.47955322265625
+	Gradient norm: 0.0
+	Elapsed time = 5.734 min
+	Per-target losses:
+		U | train loss: 2733956.447443897 | val loss: 2654196.0
+		charge | train loss: 24.167893701591748 | val loss: 23.6479549407959
+
+[Epoch 3]:
+	Average train loss: 241.67189
+	Average val loss: 236.47955322265625
+	Gradient norm: 0.0
+	Elapsed time = 5.751 min
+	Per-target losses:
+		U | train loss: 2723525.3943949244 | val loss: 2654196.0
+		charge | train loss: 24.167189295979956 | val loss: 23.6479549407959
+
+[Epoch 4]:
+	Average train loss: 241.93268
+	Average val loss: 236.47955322265625
+	Gradient norm: 0.0
+	Elapsed time = 5.726 min
+	Per-target losses:
+		U | train loss: 2735428.4756763843 | val loss: 2654196.0
+		charge | train loss: 24.19326816341221 | val loss: 23.6479549407959
+
+[Epoch 5]:
+	Average train loss: 241.74817
+	Average val loss: 236.47955322265625
+	Gradient norm: 0.0
+	Elapsed time = 5.725 min
+	Per-target losses:
+		U | train loss: 2726127.3661388424 | val loss: 2654196.0
+		charge | train loss: 24.17481715887185 | val loss: 23.6479549407959
+
+[Epoch 6]:
+	Average train loss: 241.59613
+	Average val loss: 236.47955322265625
+	Gradient norm: 0.0
+	Elapsed time = 5.713 min
+	Per-target losses:
+		U | train loss: 2724200.1361262584 | val loss: 2654196.0
+		charge | train loss: 24.159612941741944 | val loss: 23.6479549407959
+

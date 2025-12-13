@@ -1,0 +1,72 @@
+[model]
+r_cutoff = 0.45
+edge_multiplier = 1.15
+type = "MACE"
+coulomb_onset = 0.4
+coulomb_cutoff = 0.5
+alpha = 4.5
+
+[model.model_kwargs]
+hidden_irreps = "64x0e + 64x1o"
+max_ell = 3
+num_interactions = 2
+readout_mlp_irreps = "16x0e"
+correlation = 3
+charge_embed_n_hidden = 128
+charge_embed_n_layers = 2
+learn_radius = true
+qeq_rbf = true
+qeq = 1
+alpha = 1
+grid = [
+    15,
+    15,
+    15,
+]
+exclude_electrostatics = false
+
+[optimizer]
+init_lr = 0.001
+lr_decay = 0.001
+epochs = 100
+batch = 4
+cache = 100
+weight_decay = 0.0001
+exclude_correction = false
+type = "ADAM"
+power = 2
+
+[optimizer.optimizer_kwargs]
+b1 = 0.9
+b2 = 0.99
+eps = 1e-08
+
+[pre_optimizer]
+init_lr = 0.001
+lr_decay = 0.001
+epochs = 0
+batch = 6
+cache = 50
+weight_decay = 0.0001
+exclude_correction = false
+type = "ADAM"
+power = 2
+
+[pre_optimizer.optimizer_kwargs]
+b1 = 0.9
+b2 = 0.99
+eps = 1e-08
+
+[dataset]
+total_charge = "total_charge"
+spin = "spin"
+
+[gammas]
+U = 0.05
+F = 100.0
+charge = 0
+
+[pre_gammas]
+U = 0
+F = 0
+charge = 10.0

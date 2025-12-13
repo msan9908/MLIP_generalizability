@@ -1,0 +1,58 @@
+[model]
+r_cutoff = 0.45
+edge_multiplier = 1.15
+type = "DimeNetPP"
+coulomb_cutoff = 0.45
+exclude_electrostatics = false
+
+[model.model_kwargs]
+embed_size = 128
+n_interaction_blocks = 3
+out_embed_size = 128
+num_rbf = 6
+num_sbf = 7
+num_residual_before_skip = 1
+num_residual_after_skip = 2
+num_dense_out = 3
+
+[optimizer]
+init_lr = 0.01
+lr_decay = 0.001
+epochs = 140
+batch = 12
+cache = 25
+weight_decay = 0.01
+type = "ADAM"
+power = 2
+exclude_correction = false
+
+[optimizer.optimizer_kwargs]
+b1 = 0.9
+b2 = 0.99
+eps = 1e-08
+
+[pre_optimizer]
+init_lr = 0.01
+lr_decay = 1.0
+epochs = 0
+batch = 32
+cache = 25
+weight_decay = 1e-05
+exclude_correction = false
+type = "ADAM"
+
+[pre_optimizer.optimizer_kwargs]
+b1 = 0.9
+b2 = 0.99
+eps = 1e-08
+
+[dataset]
+total_charge = "total_charge"
+
+[gammas]
+U = 1.0
+charge = 0
+
+[pre_gammas]
+U = 1e-06
+charge = 0
