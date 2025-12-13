@@ -1,1 +1,1 @@
-# MLIP_generalizability
+# Supporting Information
