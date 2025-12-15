@@ -40,7 +40,8 @@ from jax_md import energy
 from chemutils.models.nequip import nequip_neighborlist_pp
 from chemutils.models.mace import mace_neighborlist_pp
 from chemutils.models.mace import mace_cemb
-from chemutils.models.mace import efa_mace
+from chemutils.models.mace import efa_mace  # OMOL
+from chemutils.models.mace import efa_mace_old # QMOF/ODAC 
 from chemutils.models.allegro import allegro_neighborlist_pp
 from chemutils.models import allegroQeq_mod_orig
 from chemutils.models import allegro_c
@@ -161,7 +162,7 @@ def define_model(config,
             box=box,
             **config["model"]["model_kwargs"]
         )
-    elif model_type == "MACE_EFA":
+    elif model_type == "MACE_EFA_NEW":
         init_fn, gnn_energy_fn = efa_mace.efa_mace_neighborlist_pp(
             displacement_fn, config["model"]["r_cutoff"],
             max_edges=max_edges, output_irreps="1x0e",
@@ -171,6 +172,16 @@ def define_model(config,
             fractional_coordinates=fractional_coordinates,
             **config["model"]["model_kwargs"]
         )
+    elif model_type == "MACE_EFA":
+        init_fn, gnn_energy_fn = efa_mace_old.efa_mace_neighborlist_pp(
+            displacement_fn, config["model"]["r_cutoff"],
+            max_edges=max_edges, output_irreps="1x0e",
+            per_particle=per_particle,
+            avg_num_neighbors=avg_num_neighbors, mode="energy",
+            positive_species=positive_species,
+            fractional_coordinates=fractional_coordinates,
+            **config["model"]["model_kwargs"]
+        )    
     elif model_type == "EFA":
         init_fn, gnn_energy_fn = efa.efa_neighborlist_pp(
             displacement_fn, config["model"]["r_cutoff"],
