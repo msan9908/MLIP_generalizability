@@ -1,0 +1,73 @@
+[model]
+r_cutoff = 0.5
+edge_multiplier = 1.15
+type = "AllegroC_emb"
+coulomb_onset = 0.4
+coulomb_cutoff = 2.5
+alpha = 4.5
+
+[model.model_kwargs]
+hidden_irreps = " 64x1e + 64x1o "
+max_ell = 2
+radius_scale = 1
+embed_dim = 128
+num_layers = [
+    2,
+    1,
+]
+charge_embed_dim = 64
+charge_embed_layers = 2
+grid = [
+    15,
+    15,
+    15,
+]
+learn_radius = true
+alpha = 4.5
+exclude_electrostatics = true
+
+[optimizer]
+init_lr = 0.005
+lr_decay = 0.001
+epochs = 100
+batch = 12
+cache = 50
+weight_decay = 0.001
+exclude_correction = false
+type = "ADAM"
+power = 2
+
+[optimizer.optimizer_kwargs]
+b1 = 0.9
+b2 = 0.99
+eps = 1e-08
+
+[pre_optimizer]
+init_lr = 0.01
+lr_decay = 0.01
+epochs = 0
+batch = 12
+cache = 50
+weight_decay = 1e-05
+exclude_correction = false
+type = "ADAM"
+power = 2
+
+[pre_optimizer.optimizer_kwargs]
+b1 = 0.9
+b2 = 0.99
+eps = 1e-08
+
+[dataset]
+total_charge = "total_charge"
+spin = "spin"
+
+[gammas]
+U = 0.005
+F = 0.1
+charge = 0
+
+[pre_gammas]
+U = 0
+F = 0
+charge = 10.0
