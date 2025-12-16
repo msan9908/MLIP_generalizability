@@ -672,7 +672,7 @@ def main():
 
 
     print(jax.devices())
-    dataset = load_and_transform_omol25('../lowest_energy_metal_organics.traj')
+    dataset = load_and_transform_omol25('./lowest_energy_metal_organics.traj')
     #out_dir = train_utils.create_out_dir(config, tag="omol_dimnet")
     #print(f"Output directory: {out_dir}")
     dataset_scalled = scale_dataset(dataset, scale_R=0.1, scale_U=96.485, scale_e=11.7871, fractional=False)
