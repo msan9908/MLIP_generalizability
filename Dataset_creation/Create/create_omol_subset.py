@@ -3,8 +3,8 @@ from fairchem.core.datasets import AseDBDataset
 from ase.io import Trajectory
 
 # Path to the train split LMDB
-dataset_path = "/Users/michalsanocki/Downloads/train_4M"
-save_path = 'lowest_energy_metal_organics.traj'
+dataset_path = "/Users/michalsanocki/Downloads/train_4M" # Path to OMOL dataset
+save_path = '../chemtrain/OMOL/lowest_energy_metal_organics.traj' # Output  path
 # Load dataset
 dataset = AseDBDataset({"src": dataset_path})
 print(f"Loaded dataset with {len(dataset)} structures\n")
