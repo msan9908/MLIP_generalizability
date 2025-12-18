@@ -1,6 +1,7 @@
 # Supporting Information
 
-This repository contains the Supporting Information code for: XXXXXXXX
+This repository contains the Supporting Information code for: 
+Sanocki, M., & Zavadlav, J. (2025). Generalization of Long-Range Machine Learning Potentials in Complex Chemical Spaces. ArXiv. https://arxiv.org/abs/2512.10989
 
 
 
