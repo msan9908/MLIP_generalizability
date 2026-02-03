@@ -12,6 +12,7 @@ This repository contains code grouped under:
   - les/         — code for training and evaluation of models that depends on LES and MACE code. For installation details see: https://github.com/ChengUCB/les/tree/main
   - Dataset_creation/ - code for Dataset and biased split creation 
 
+Requirements for chemtrain and les are available in their corresponding directories.
 
 Information on Datasets utilized in this study is availble at:
   - QMOF https://github.com/Andrew-S-Rosen/QMOF
