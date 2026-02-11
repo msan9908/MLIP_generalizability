@@ -61,13 +61,7 @@ Standard preprocessing uses:
 preprocess_mof_data(data_path, split_method="cluster", val_ratio=0.1, seed=3)
 
 
-Supported split_method values:
-
-cluster
-
-maxsep
-
-None (random fallback)
+Supported split_method values: cluster, maxsep, None (random fallback)
 
 Cluster and MaxSep require:
 
@@ -78,7 +72,6 @@ SL (small/large) experiments use a separate preprocessing function:
 
 preprocess_mof_data(data_path, train_cutoff=100)
 
-If these files are not found, a random split is used automatically.
 
 Models are launched as:
 
@@ -87,4 +80,22 @@ python SCRIPT.py GPU_IDS
 
 
 ### les
+
+LES-based models are trained using the provided fit.sh script, which wraps run_train.py and specifies all model and training parameters.
+
+
+
+Datasets are provided as .extxyz files:
+
+--train_file
+
+--valid_file
+
+--test_file
+
+
+All model architecture, optimization, and training hyperparameters (MACELES, channels, cutoff, interactions, EMA, SWA, etc.) are defined directly in fit.sh.
+
+Each run produces standard LES/MACE output logs and checkpoints in the working directory.
+
 
