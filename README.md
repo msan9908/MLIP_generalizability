@@ -79,7 +79,7 @@ python SCRIPT.py GPU_IDS
 
 
 
-### les
+## les
 
 LES-based models are trained using the provided fit.sh script, which wraps run_train.py and specifies all model and training parameters.
 
