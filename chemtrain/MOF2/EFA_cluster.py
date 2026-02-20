@@ -61,7 +61,7 @@ def get_default_config():
 
                 hidden_irreps=" 64x1e + 64x1o ",
                 max_ell=2 ,
-                embed_dim=64,
+                embed_dim=128,
                 num_layers=2,
                 era_max_length=0.5,
                 mlp_n_hidden=64,
