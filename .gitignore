@@ -1,4 +1,5 @@
 .DS_Store
 trainer.pkl
 */trainer.pkl
-*/output
+**/output/
+
