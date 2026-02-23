@@ -89,7 +89,7 @@ def get_default_config():
             edge_multiplier=1.15,
             type="MACE",
             model_kwargs=OrderedDict(
-                hidden_irreps="64x0e + 32x1o",
+                hidden_irreps="64x0e + 64x1o",
                 max_ell=3,
                 num_interactions=4,
                 readout_mlp_irreps = "16x0e",
