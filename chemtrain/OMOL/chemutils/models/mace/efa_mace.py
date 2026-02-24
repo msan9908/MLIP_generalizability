@@ -1,5 +1,3 @@
-"""Custom implementation of Allegro-Jax.
-"""
 import functools
 from copy import deepcopy
 from typing import Callable,  Any, Tuple,  Optional, Union
@@ -40,7 +38,7 @@ import e3x
 efa_default_kwargs = OrderedDict(
 
     era_use_in_iterations=[0,1],  # Apply EFA at given layers
-    num_features_efa=128,
+    num_features_efa=64,
     era_lebedev_num=50,
     era_include_pseudotensors=False,
     era_tensor_integration=False,
@@ -48,7 +46,7 @@ efa_default_kwargs = OrderedDict(
     era_max_degree=0,
     era_qk_num_features=16,
     era_num_frequencies=8,
-    era_v_num_features=32,
+    era_v_num_features=256,
     era_max_frequency=jnp.pi,
     era_max_length=0.5,
     atomic_dipole_embedding=False,
@@ -60,7 +58,14 @@ efa_default_kwargs = OrderedDict(
 
 )
 
+
 class EFAIntegrationBlock(flaxnn.Module):
+    """Flax wrapper for EuclideanFastAttention used inside Haiku models.
+
+    Fixes Flax's AssignSubModuleError by constructing the attention submodule in
+    `setup()` (rather than dynamically inside `__call__`).
+    """
+
     num_features: int
     era_use_in_iterations: list[int] | None = None
     emulate_era_block: bool = False
@@ -70,7 +75,7 @@ class EFAIntegrationBlock(flaxnn.Module):
     era_activation_fn: callable = e3x.nn.silu
     era_num_frequencies: int = 8
     era_max_frequency: float = 2.0
-    era_max_length: float = 0.5,
+    era_max_length: float = 0.5
     era_tensor_integration: bool = True
     era_ti_max_degree_sph: int = 1
     era_ti_max_degree: int = 1
@@ -79,41 +84,40 @@ class EFAIntegrationBlock(flaxnn.Module):
     era_ti_degree_scaling_constants: str = "2**-degree"
     last_layer_kernel_init: callable = jax.nn.initializers.zeros
 
+    def setup(self):
+        # Stable submodule tree: no dynamic creation/naming in __call__.
+        self._efa = EuclideanFastAttention(
+            lebedev_num=self.era_lebedev_num,
+            num_features_qk=self.era_qk_num_features,
+            num_features_v=self.era_v_num_features,
+            activation_fn=self.era_activation_fn,
+            epe_num_frequencies=self.era_num_frequencies,
+            epe_max_frequency=self.era_max_frequency,
+            epe_max_length=self.era_max_length,
+            tensor_integration=self.era_tensor_integration,
+            ti_max_degree_sph=self.era_ti_max_degree_sph,
+            ti_max_degree=self.era_ti_max_degree,
+            ti_parametrize_coupling_paths=self.era_ti_parametrize_coupling_paths,
+            ti_degree_scaling_constants=self.era_ti_degree_scaling_constants,
+            # IMPORTANT: static name (Flax does not support dynamic names).
+            name="EuclideanRopeAttention",
+        )
 
     @flaxnn.compact
     def __call__(self, species_emb, positions, batch_segments, graph_mask, i):
-        # Embedding species
-          
+        # `i` is kept for backwards compatibility with existing call sites.
         x = species_emb
-        x = x[:, None, None, :]  # reshape as needed for EFA  (N, 1, 1, num_features)
+        x = x[:, None, None, :]  # (N, 1, 1, F)
 
         if self.emulate_era_block:
-            y_nl = e3x.nn.Dense(self.num_features)(x)
-        else:
-            efa_input = e3x.nn.change_max_degree_or_type(
-                x, max_degree=self.era_max_degree, include_pseudotensors=False
-            )
+            # Use Flax Dense here (not e3x.nn.Dense) to keep params in this Flax module.
+            return flaxnn.Dense(self.num_features)(x)
 
-            y_nl = EuclideanFastAttention(
-                lebedev_num=self.era_lebedev_num,
-                num_features_qk=self.era_qk_num_features,
-                num_features_v=self.era_v_num_features,
-                activation_fn=self.era_activation_fn,
-                epe_num_frequencies=self.era_num_frequencies,
-                epe_max_frequency=self.era_max_frequency,
-                epe_max_length=self.era_max_length,
-                tensor_integration=self.era_tensor_integration,
-                ti_max_degree_sph=self.era_ti_max_degree_sph,
-                ti_max_degree=self.era_ti_max_degree,
-                ti_parametrize_coupling_paths=self.era_ti_parametrize_coupling_paths,
-                ti_degree_scaling_constants=self.era_ti_degree_scaling_constants,
-                name=f'EuclideanRopeAttention_{i}'
-            )(efa_input, positions, batch_segments, graph_mask)
-
-        
+        efa_input = e3x.nn.change_max_degree_or_type(
+            x, max_degree=self.era_max_degree, include_pseudotensors=False
+        )
+        y_nl = self._efa(efa_input, positions, batch_segments, graph_mask)
         return y_nl
-
-
 
 
 class MACE(hk.Module):
@@ -256,6 +260,7 @@ class MACE(hk.Module):
         mask: jnp.ndarray,  # [n_nodes]
         node_mask: Optional[jnp.ndarray] = None,  # [n_nodes] only used for profiling
         is_training: bool = False,
+        efa_params: Optional[dict] = None,
 
     ) -> e3nn.IrrepsArray:
         assert vectors.ndim == 2 and vectors.shape[1] == 3
@@ -310,6 +315,7 @@ class MACE(hk.Module):
                 soft_normalization=self.soft_normalization,
                 skip_connection_first_layer=self.skip_connection_first_layer,
                 name=f"layer_{i}",
+                layer_index=i,
                 era_use_in_iterations = self.era_use_in_iterations,
                 emulate_era_block = self.emulate_era_block,
                 era_lebedev_num = self.era_lebedev_num,
@@ -342,6 +348,7 @@ class MACE(hk.Module):
                 mask,
                 node_mask,
                 is_training,
+                efa_params,
             )
 
             outputs += [node_outputs]  # list of [n_nodes, output_irreps]
@@ -365,6 +372,7 @@ class MACELayer(hk.Module):
         num_species: int,
         epsilon: Optional[float],
         name: Optional[str],
+        layer_index: int,
         # InteractionBlock:
         max_ell: int,
         # EquivariantProductBasisBlock:
@@ -441,7 +449,27 @@ class MACELayer(hk.Module):
         self.era_ti_degree_scaling_constants = era_ti_degree_scaling_constants
         self.last_layer_kernel_init = last_layer_kernel_init
         self.num_features_efa = num_features_efa
-        
+        self.layer_index = layer_index
+        # Flax EFA block instance (params are passed externally via `efa_params`).
+        self.efa_block = EFAIntegrationBlock(
+            num_features=self.num_features_efa,
+            era_use_in_iterations=self.era_use_in_iterations,
+            emulate_era_block=self.emulate_era_block,
+            era_lebedev_num=self.era_lebedev_num,
+            era_qk_num_features=self.era_qk_num_features,
+            era_v_num_features=self.era_v_num_features,
+            era_activation_fn=self.era_activation_fn,
+            era_num_frequencies=self.era_num_frequencies,
+            era_max_frequency=self.era_max_frequency,
+            era_max_length=self.era_max_length,
+            era_tensor_integration=self.era_tensor_integration,
+            era_ti_max_degree_sph=self.era_ti_max_degree_sph,
+            era_ti_max_degree=self.era_ti_max_degree,
+            era_ti_parametrize_coupling_paths=self.era_ti_parametrize_coupling_paths,
+            era_ti_degree_scaling_constants=self.era_ti_degree_scaling_constants,
+            last_layer_kernel_init=self.last_layer_kernel_init,
+            name=f"EFAIntegrationBlock_{layer_index}",
+        )
 
     def __call__(
         self,
@@ -456,7 +484,7 @@ class MACELayer(hk.Module):
         mask: jnp.ndarray,  # [n_nodes]
         node_mask: Optional[jnp.ndarray] = None,  # [n_nodes] only used for profiling    
         is_training: bool = False,
-    
+        efa_params: Optional[dict] = None,
     ):
         if node_mask is None:
             node_mask = jnp.ones(node_specie.shape[0], dtype=jnp.bool_)
@@ -473,32 +501,20 @@ class MACELayer(hk.Module):
             
             num_graphs = 1
             batch_segments = jnp.repeat(jnp.arange(num_graphs), positions.shape[0])
-            graph_mask = mask
-            
-            # 3. Create EFAIntegrationBlock
-            efa_model = EFAIntegrationBlock(num_features=self.num_features_efa,  # Match edge feature dimension
-                    era_use_in_iterations=self.era_use_in_iterations,
-                    emulate_era_block=self.emulate_era_block,
-                    era_lebedev_num=self.era_lebedev_num,
-                    era_qk_num_features=self.era_qk_num_features,
-                    era_v_num_features=self.era_v_num_features,
-                    era_activation_fn=self.era_activation_fn,
-                    era_num_frequencies=self.era_num_frequencies,
-                    era_max_frequency=self.era_max_frequency,
-                    era_max_length=self.era_max_length,
-                    era_tensor_integration=self.era_tensor_integration,
-                    era_ti_max_degree_sph=self.era_ti_max_degree_sph,
-                    era_ti_max_degree=self.era_ti_max_degree,
-                    era_ti_parametrize_coupling_paths=self.era_ti_parametrize_coupling_paths,
-                    era_ti_degree_scaling_constants=self.era_ti_degree_scaling_constants,
-                    last_layer_kernel_init=self.last_layer_kernel_init,
-                    name='EFAIntegrationBlock',)
-
-            # Initialize
-            key = jax.random.PRNGKey(0)
-            variables = efa_model.init(key, species_emb, positions, batch_segments, graph_mask, 0)
-            # Apply
-            efa_node_features = efa_model.apply(variables, species_emb, positions, batch_segments, graph_mask, 0)
+            graph_mask = mask            # Apply Flax EFA using externally-managed parameters (Pattern B).
+            if efa_params is None:
+                raise ValueError("efa_params is required when use_efa=True")
+            layer_key = f"layer_{self.layer_index}"
+            if layer_key not in efa_params:
+                raise KeyError(f"Missing EFA params for {layer_key}. Available keys: {list(efa_params.keys())}")
+            efa_node_features = self.efa_block.apply(
+                {"params": efa_params[layer_key]},
+                species_emb,
+                positions,
+                batch_segments,
+                graph_mask,
+                0,
+            )
                 
             #refined_node_features_flat = refined_node_features.reshape(refined_node_features.shape[0], -1)
             #refined_node_features = species_emb + e3nn.haiku.Linear([self.num_features_efa])(efa_node_features)#e3x.nn.add(e3x.nn.Dense(self.num_features)(refined_node_features), species_emb)
@@ -707,6 +723,7 @@ def efa_mace_neighborlist_pp(displacement: space.DisplacementFn,
               neighbor: partition.NeighborList,
               species: md_util.Array = None,
               mask: md_util.Array = None,
+              efa_params: Optional[dict] = None,
               **dynamic_kwargs):
         if species is None:
             print(f"[MACE] Use default species")
@@ -776,7 +793,7 @@ def efa_mace_neighborlist_pp(displacement: space.DisplacementFn,
 
         
         features = net(
-            vectors, senders, receivers, species,  positions=real_position,  mask=mask)
+            vectors, senders, receivers, species,  positions=real_position,  mask=mask, efa_params=efa_params)
 
         if mode in ["energy", "energy_and_charge"]:
             _ = dynamic_kwargs.pop("reps", None)
@@ -799,4 +816,74 @@ def efa_mace_neighborlist_pp(displacement: space.DisplacementFn,
         else:
             raise NotImplementedError(f"Mode {mode} not implemented.")
 
-    return jax.jit(model.init), jax.jit(model.apply)
+    # -----------------------------
+# Pattern B: external Flax params
+    # -----------------------------
+    efa_model_template = EFAIntegrationBlock(
+        num_features=kwargs["num_features_efa"],
+        era_use_in_iterations=kwargs["era_use_in_iterations"],
+        emulate_era_block=False,
+        era_lebedev_num=kwargs["era_lebedev_num"],
+        era_qk_num_features=kwargs["era_qk_num_features"],
+        era_v_num_features=kwargs["era_v_num_features"],
+        era_activation_fn=e3x.nn.gelu,
+        era_num_frequencies=kwargs["era_num_frequencies"],
+        era_max_frequency=kwargs["era_max_frequency"],
+        era_max_length=kwargs["era_max_length"],
+        era_tensor_integration=kwargs["era_tensor_integration"],
+        era_ti_max_degree_sph=kwargs.get("era_ti_max_degree_sph", 1) or 1,
+        era_ti_max_degree=kwargs.get("era_ti_max_degree", 1) or 1,
+        era_ti_parametrize_coupling_paths=kwargs["era_ti_parametrize_coupling_paths"],
+        era_ti_degree_scaling_constants=str(kwargs["era_ti_degree_scaling_constants"]),
+        last_layer_kernel_init=kwargs["last_layer_kernel_init"],
+        name="EFAIntegrationBlock_template",
+    )
+
+    def init_all(key, *args, **dynamic_kwargs):
+        # ---------
+        # Initialize Flax EFA params FIRST (so we can pass them into Haiku init).
+        # ---------
+        n_nodes = args[0].shape[0]  # position has shape (N,3) or (N,dim)
+
+        dummy_species_emb = jnp.zeros((n_nodes, kwargs["num_features_efa"]), dtype=jnp.float32)
+        dummy_positions = jnp.zeros((n_nodes, 3), dtype=jnp.float32)
+        batch_segments = jnp.zeros((n_nodes,), dtype=jnp.int32)
+        graph_mask = jnp.ones((n_nodes,), dtype=jnp.bool_)
+
+        efa_params = {}
+        for i in kwargs["era_use_in_iterations"]:
+            block = EFAIntegrationBlock(
+                num_features=kwargs["num_features_efa"],
+                era_use_in_iterations=kwargs["era_use_in_iterations"],
+                emulate_era_block=False,
+                era_lebedev_num=kwargs["era_lebedev_num"],
+                era_qk_num_features=kwargs["era_qk_num_features"],
+                era_v_num_features=kwargs["era_v_num_features"],
+                era_activation_fn=e3x.nn.gelu,
+                era_num_frequencies=kwargs["era_num_frequencies"],
+                era_max_frequency=kwargs["era_max_frequency"],
+                era_max_length=kwargs["era_max_length"],
+                era_tensor_integration=kwargs["era_tensor_integration"],
+                era_ti_max_degree_sph=kwargs["era_ti_max_degree_sph"],
+                era_ti_max_degree=kwargs["era_ti_max_degree"],
+                era_max_degree=kwargs["era_max_degree"],
+                era_ti_parametrize_coupling_paths=kwargs["era_ti_parametrize_coupling_paths"],
+                era_ti_degree_scaling_constants=kwargs["era_ti_degree_scaling_constants"],
+                last_layer_kernel_init=kwargs["last_layer_kernel_init"],
+                name=f"EFAIntegrationBlock_layer_{i}",
+            )
+            efa_key = jax.random.fold_in(key, int(i))
+            efa_vars = block.init(efa_key, dummy_species_emb, dummy_positions, batch_segments, graph_mask, int(i))
+            efa_params[f"layer_{i}"] = efa_vars["params"]
+
+        # ---------
+        # Haiku params (Haiku graph needs efa_params to be present when use_efa=True).
+        # ---------
+        hk_params = model.init(key, *args, efa_params=efa_params, **dynamic_kwargs)
+
+        return {"haiku": hk_params, "efa": efa_params}
+
+    def apply_all(all_params, *args, **dynamic_kwargs):
+        return model.apply(all_params["haiku"], *args, efa_params=all_params["efa"], **dynamic_kwargs)
+
+    return jax.jit(init_all), jax.jit(apply_all)
