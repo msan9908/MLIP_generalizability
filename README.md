@@ -63,7 +63,7 @@ preprocess_mof_data(data_path, split_method="cluster", val_ratio=0.1, seed=3)
 
 Supported split_method values: cluster, maxsep, None (random fallback)
 
-Cluster and MaxSep require:
+Cluster and Maximum Separation methods require:
 
 train_refcodes_<split_method>.csv
 test_refcodes_<split_method>.csv
