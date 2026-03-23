@@ -265,7 +265,6 @@ def define_model(config,
     )
 
     # print(f"Init params: {init_params}")
-    # print(f"Initial energy is {jax.jit(energy_fn_template(init_params))(r_init, nbrs_init, mask=mask_init, species=species_init, total_charge=0, **init_kwargs)}")
     # print(f"Initial forces are {jax.jit(jax.grad(energy_fn_template(init_params)))(r_init, nbrs_init, mask=mask_init, species=species_init)}")
     # print(f"Potential energy parameter gradients are {jax.jit(jax.grad(lambda x: jnp.sum(energy_fn_template(x)(r_init, nbrs_init, mask=mask_init, species=species_init))))(init_params)}")
     # print(f"Potential force norm parameter gradients are {jax.jit(jax.grad(lambda x: jnp.linalg.norm(jax.grad(energy_fn_template(x))(r_init, nbrs_init, mask=mask_init, species=species_init))))(init_params)}")
