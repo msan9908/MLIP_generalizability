@@ -4,7 +4,8 @@ This repository contains the Supporting Information code for:
 
 > **Sanocki, M., & Zavadlav, J. (2025)**  
 > *Generalization of Long-Range Machine Learning Potentials in Complex Chemical Spaces*  
-> https://arxiv.org/abs/2512.10989
+> Digital Discovery, vol. 5, RSC, 2026, pp. 2195–2208,
+> DOI: 10.1039/D5DD00570A
 
 ---
 
