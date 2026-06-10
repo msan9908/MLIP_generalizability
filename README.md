@@ -1,101 +1,199 @@
 # Supporting Information
 
-This repository contains the Supporting Information code for: 
-***Sanocki, M., & Zavadlav, J. (2025). Generalization of Long-Range Machine Learning Potentials in Complex Chemical Spaces. ArXiv. https://arxiv.org/abs/2512.10989***
+This repository contains the Supporting Information code for:
 
+> **Sanocki, M., & Zavadlav, J. (2025)**  
+> *Generalization of Long-Range Machine Learning Potentials in Complex Chemical Spaces*  
+> https://arxiv.org/abs/2512.10989
 
+---
 
-## Summary
+## 📦 Repository Structure
 
-This repository contains code grouped under:
-  - chemtrain/   — code for training and evaluation of models that depend on the chemtrain code. For installation details, see: https://github.com/tummfm/chemtrain
-  - les/         — code for training and evaluation of models that depend on LES and MACE code. For installation details, see: https://github.com/ChengUCB/les/tree/main
-  - Dataset_creation/ - code for Dataset and biased split creation 
+The repository is organized into the following components:
 
-Requirements for chemtrain and les are available in their corresponding directories.
+- `chemtrain/` – Training and evaluation code based on **chemtrain**  
+  → Installation: https://github.com/tummfm/chemtrain  
 
-Information on the datasets utilized in this study is available at:
-  - QMOF https://github.com/Andrew-S-Rosen/QMOF
-  - ODAC25 https://huggingface.co/facebook/ODAC25
-  - OMOL25 https://huggingface.co/facebook/OMol25
+- `les/` – Training and evaluation code based on **LES** and **MACE**  
+  → Installation: https://github.com/ChengUCB/les/tree/main  
 
-## Training
+- `Dataset_creation/` – Scripts for dataset construction and biased split generation  
 
-Each split trained on the QMOF dataset has seperate training split, whereas the split for models trained on OMOL25 and ODAC25 has to be specified using the command line (path for maxsep and cluster splits or seed for random, for size split --sl True). 
+Each submodule contains its own dependency requirements.
 
-## chemtrain 
+---
 
-### ODAC/OMOL
-Chemtrain-based models trained on ODAC25 or OMol25 are launched as:
+## 📊 Datasets
 
+The datasets used in this study are available at:
+
+- **QMOF**  
+  https://github.com/Andrew-S-Rosen/QMOF  
+
+- **ODAC25**  
+  https://huggingface.co/facebook/ODAC25  
+
+- **OMol25**  
+  https://huggingface.co/facebook/OMol25  
+
+---
+
+## 🏋️ Training Overview
+
+- **QMOF models**: use predefined dataset splits (handled internally in scripts)  
+- **OMol25 / ODAC25 models**: require split specification via command-line arguments  
+
+Split types include:
+
+- Cluster split  
+- Maximum separation (maxsep)  
+- Random split  
+- Small/Large (SL) split  
+
+---
+
+# 🔬 chemtrain
+
+## ODAC / OMol Training
+
+Run chemtrain-based models as:
+
+```bash
 python SCRIPT.py GPU_ID --traj PATH_TO_TRAJ [split options]
+```
 
+### Split Strategies
 
-Split strategies
+#### Cluster / Max Separation (external indices)
 
-Cluster / Max Separation (external indices)
-
+```bash
 --train_indices path/to/train_indices.txt
 --test_indices  path/to/test_indices.txt
+```
 
+#### Example
 
-Example:
-
+```bash
 python allegro_efa_odac.py "1" \
   --traj path/to/dataset.traj \
   --train_indices path/to/train_indices.txt \
   --test_indices path/to/test_indices.txt
+```
 
+#### Random Split
 
-Random split: python allegro_efa_odac.py "1" --traj path/to/dataset.traj --seed 3
+```bash
+python allegro_efa_odac.py "1" \
+  --traj path/to/dataset.traj \
+  --seed 3
+```
 
+#### Small/Large (SL) Split
 
-SL split (small/large): python allegro_efa_odac.py "1" --traj path/to/dataset.traj --seed 3 --sl True
+```bash
+python allegro_efa_odac.py "1" \
+  --traj path/to/dataset.traj \
+  --seed 3 \
+  --sl True
+```
 
-### QMOF
+---
 
-For QMOF, dataset splitting is defined inside each training script.
+## QMOF Training
 
-Standard preprocessing uses:
+For QMOF, dataset splitting is handled inside each training script.
 
-preprocess_mof_data(data_path, split_method="cluster", val_ratio=0.1, seed=3)
+### Standard Preprocessing
 
+```python
+preprocess_mof_data(
+    data_path,
+    split_method="cluster",
+    val_ratio=0.1,
+    seed=3
+)
+```
 
-Supported split_method values: cluster, maxsep, None (random fallback)
+Supported `split_method` values:
 
-Cluster and Maximum Separation methods require:
+- `cluster`
+- `maxsep`
+- `None` (fallback to random split)
 
+### Required Files for Cluster / MaxSep
+
+```
 train_refcodes_<split_method>.csv
 test_refcodes_<split_method>.csv
+```
 
-SL (small/large) experiments use a separate preprocessing function:
+### Small/Large (SL) Preprocessing
 
-preprocess_mof_data(data_path, train_cutoff=100)
+```python
+preprocess_mof_data(
+    data_path,
+    train_cutoff=100
+)
+```
 
+### Running Models
 
-Models are launched as:
-
+```bash
 python SCRIPT.py GPU_IDS
+```
 
+---
 
+# ⚙️ les
 
-## les
+LES-based models are trained using the provided `fit.sh` script.
 
-LES-based models are trained using the provided fit.sh script, which wraps run_train.py and specifies all model and training parameters.
+### Training Entry Point
 
+```bash
+bash fit.sh
+```
 
+This script wraps:
 
-Datasets are provided as .extxyz files:
+```bash
+run_train.py
+```
 
---train_file
+and defines all model and training parameters.
 
---valid_file
+---
 
---test_file
+## 📂 Dataset Format
 
+Datasets must be provided as `.extxyz` files:
 
-All model architecture, optimization, and training hyperparameters (MACELES, channels, cutoff, interactions, EMA, SWA, etc.) are defined directly in fit.sh.
+```bash
+--train_file path/to/train.extxyz
+--valid_file path/to/valid.extxyz
+--test_file  path/to/test.extxyz
+```
 
-Each run produces standard LES/MACE output logs and checkpoints in the working directory.
+---
 
+## ⚙️ Configuration
 
+All key parameters are defined directly in `fit.sh`, including:
+
+- Model architecture (MACELES)
+- Number of channels
+- Cutoff radius
+- Number of interactions
+- Optimization settings
+- EMA / SWA
+
+---
+
+## 📈 Outputs
+
+Each training run produces:
+
+- Standard LES/MACE logs  
+- Model checkpoints  
+- Outputs saved in the working directory  
